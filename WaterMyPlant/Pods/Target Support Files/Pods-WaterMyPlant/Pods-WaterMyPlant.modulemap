@@ -1,0 +1,6 @@
+framework module Pods_WaterMyPlant {
+  umbrella header "Pods-WaterMyPlant-umbrella.h"
+
+  export *
+  module * { export * }
+}
