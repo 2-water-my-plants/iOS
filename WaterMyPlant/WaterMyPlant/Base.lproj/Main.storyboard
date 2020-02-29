@@ -265,7 +265,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mrq-Qe-3UO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Bm2-RQ-h4w"/>
+                    <navigationItem key="navigationItem" id="Bm2-RQ-h4w">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Z8g-3w-NVI"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Be-eE-AV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
