@@ -15,6 +15,15 @@
 		938C37892407933300C274D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C37872407933300C274D6 /* Main.storyboard */; };
 		938C378B2407934F00C274D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938C378A2407934F00C274D6 /* Assets.xcassets */; };
 		938C378E2407934F00C274D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C378C2407934F00C274D6 /* LaunchScreen.storyboard */; };
+		93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B556240A400E008941B2 /* SignUpViewController.swift */; };
+		93B2B559240A425C008941B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B558240A425C008941B2 /* Utilities.swift */; };
+		93B2B55B240A44CB008941B2 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */; };
+		93B2B55E240A464A008941B2 /* DJAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B55D240A464A008941B2 /* DJAlertVC.swift */; };
+		93B2B560240A46A5008941B2 /* DJTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B55F240A46A5008941B2 /* DJTitleLabel.swift */; };
+		93B2B562240A4797008941B2 /* DJErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B561240A4797008941B2 /* DJErrorMessage.swift */; };
+		93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B563240A480D008941B2 /* DJBodyLabel.swift */; };
+		93B2B566240A49DF008941B2 /* DJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B565240A49DF008941B2 /* DJButton.swift */; };
+		93B2B568240A4E2F008941B2 /* PlantsSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +36,15 @@
 		938C378A2407934F00C274D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938C378D2407934F00C274D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		938C378F2407934F00C274D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93B2B556240A400E008941B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		93B2B558240A425C008941B2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		93B2B55D240A464A008941B2 /* DJAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJAlertVC.swift; sourceTree = "<group>"; };
+		93B2B55F240A46A5008941B2 /* DJTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJTitleLabel.swift; sourceTree = "<group>"; };
+		93B2B561240A4797008941B2 /* DJErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJErrorMessage.swift; sourceTree = "<group>"; };
+		93B2B563240A480D008941B2 /* DJBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJBodyLabel.swift; sourceTree = "<group>"; };
+		93B2B565240A49DF008941B2 /* DJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJButton.swift; sourceTree = "<group>"; };
+		93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSelectorViewController.swift; sourceTree = "<group>"; };
 		C3F2CEFCC3DBC13279A01594 /* Pods_WaterMyPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterMyPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA241F44661EDB8B479E651E /* Pods-WaterMyPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.debug.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.debug.xcconfig"; sourceTree = "<group>"; };
 		E8025DFE080C992B1B33B350 /* Pods-WaterMyPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.release.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +82,8 @@
 		938C37752407933200C274D6 = {
 			isa = PBXGroup;
 			children = (
+				93B2B55C240A4628008941B2 /* Alert */,
+				93B2B555240A3FD4008941B2 /* Controllers */,
 				938C37802407933300C274D6 /* WaterMyPlant */,
 				938C377F2407933300C274D6 /* Products */,
 				540D92A82A5ADF55EABEA5D4 /* Pods */,
@@ -92,6 +112,29 @@
 				938C378F2407934F00C274D6 /* Info.plist */,
 			);
 			path = WaterMyPlant;
+			sourceTree = "<group>";
+		};
+		93B2B555240A3FD4008941B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				93B2B556240A400E008941B2 /* SignUpViewController.swift */,
+				93B2B558240A425C008941B2 /* Utilities.swift */,
+				93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */,
+				93B2B55F240A46A5008941B2 /* DJTitleLabel.swift */,
+				93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		93B2B55C240A4628008941B2 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				93B2B55D240A464A008941B2 /* DJAlertVC.swift */,
+				93B2B561240A4797008941B2 /* DJErrorMessage.swift */,
+				93B2B563240A480D008941B2 /* DJBodyLabel.swift */,
+				93B2B565240A49DF008941B2 /* DJButton.swift */,
+			);
+			name = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +237,15 @@
 			files = (
 				938C37862407933300C274D6 /* ViewController.swift in Sources */,
 				938C37822407933300C274D6 /* AppDelegate.swift in Sources */,
+				93B2B566240A49DF008941B2 /* DJButton.swift in Sources */,
+				93B2B562240A4797008941B2 /* DJErrorMessage.swift in Sources */,
+				93B2B55B240A44CB008941B2 /* UIViewController+Ext.swift in Sources */,
+				93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */,
+				93B2B55E240A464A008941B2 /* DJAlertVC.swift in Sources */,
+				93B2B568240A4E2F008941B2 /* PlantsSelectorViewController.swift in Sources */,
+				93B2B560240A46A5008941B2 /* DJTitleLabel.swift in Sources */,
+				93B2B559240A425C008941B2 /* Utilities.swift in Sources */,
+				93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */,
 				938C37842407933300C274D6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

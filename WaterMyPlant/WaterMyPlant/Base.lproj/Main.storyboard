@@ -98,6 +98,9 @@
                                         <state key="normal" title="Create Account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="GjZ-k4-WYR" kind="show" id="QKr-LA-4Z8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -145,6 +148,111 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoE-Um-9cm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-57.971014492753625" y="137.94642857142856"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="Fx9-Fa-FAE">
+            <objects>
+                <viewController id="GjZ-k4-WYR" customClass="SignUpViewController" customModule="WaterMyPlant" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LfQ-7o-Ob8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="0Hj-4U-CFO">
+                                <rect key="frame" x="40" y="84" width="295" height="420"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7do-VR-DPC">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ILU-2R-hMA">
+                                        <rect key="frame" x="0.0" y="74" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fj-I7-OTB">
+                                        <rect key="frame" x="0.0" y="148" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jn3-ab-ZEm">
+                                        <rect key="frame" x="0.0" y="222" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkS-lV-vqH">
+                                        <rect key="frame" x="0.0" y="296" width="295" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qt3-De-KKW">
+                                        <rect key="frame" x="0.0" y="370" width="295" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="agY-40-ZxY"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpButtonTapped:" destination="GjZ-k4-WYR" eventType="touchUpInside" id="wFt-52-B62"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JyM-ic-OQN" firstAttribute="trailing" secondItem="0Hj-4U-CFO" secondAttribute="trailing" constant="40" id="Qva-oX-YoJ"/>
+                            <constraint firstItem="0Hj-4U-CFO" firstAttribute="top" secondItem="JyM-ic-OQN" secondAttribute="top" constant="40" id="Smb-15-rFn"/>
+                            <constraint firstItem="0Hj-4U-CFO" firstAttribute="leading" secondItem="JyM-ic-OQN" secondAttribute="leading" constant="40" id="mkg-VB-ddZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JyM-ic-OQN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="57Y-tT-CcN"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="jn3-ab-ZEm" id="JhP-xD-Zsk"/>
+                        <outlet property="firstNameTextField" destination="7do-VR-DPC" id="ZJ6-hK-oyI"/>
+                        <outlet property="lastNameTextField" destination="ILU-2R-hMA" id="9w4-Tr-cZR"/>
+                        <outlet property="passwordTextField" destination="WkS-lV-vqH" id="sQq-CP-dCn"/>
+                        <outlet property="signUpButton" destination="qt3-De-KKW" id="Kbk-dO-bSw"/>
+                        <outlet property="usernameTextField" destination="6fj-I7-OTB" id="5PP-lL-FN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zD9-PW-WZZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="517"/>
+        </scene>
+        <!--Plants Selector View Controller-->
+        <scene sceneID="D44-0r-Grf">
+            <objects>
+                <viewController storyboardIdentifier="PlantsSelectorVC" id="5bZ-gI-TKg" customClass="PlantsSelectorViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZhV-Yn-uRh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iXv-YU-UCr"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3nx-Hq-u94"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ba5-xq-nw2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="137"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yPQ-4q-4dO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D80-kK-kLF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KjN-fu-zKn">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5bZ-gI-TKg" kind="relationship" relationship="rootViewController" id="HQ8-Kn-cGm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNW-Dx-LlC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2847" y="137"/>
         </scene>
     </scenes>
     <resources>
