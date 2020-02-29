@@ -23,7 +23,7 @@
 		93B2B562240A4797008941B2 /* DJErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B561240A4797008941B2 /* DJErrorMessage.swift */; };
 		93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B563240A480D008941B2 /* DJBodyLabel.swift */; };
 		93B2B566240A49DF008941B2 /* DJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B565240A49DF008941B2 /* DJButton.swift */; };
-		93B2B568240A4E2F008941B2 /* PlantsSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */; };
+		93BAC81F240B1C6600B63171 /* AddPlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		93B2B561240A4797008941B2 /* DJErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJErrorMessage.swift; sourceTree = "<group>"; };
 		93B2B563240A480D008941B2 /* DJBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJBodyLabel.swift; sourceTree = "<group>"; };
 		93B2B565240A49DF008941B2 /* DJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJButton.swift; sourceTree = "<group>"; };
-		93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSelectorViewController.swift; sourceTree = "<group>"; };
+		93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantsViewController.swift; sourceTree = "<group>"; };
 		C3F2CEFCC3DBC13279A01594 /* Pods_WaterMyPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterMyPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA241F44661EDB8B479E651E /* Pods-WaterMyPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.debug.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.debug.xcconfig"; sourceTree = "<group>"; };
 		E8025DFE080C992B1B33B350 /* Pods-WaterMyPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.release.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 				93B2B558240A425C008941B2 /* Utilities.swift */,
 				93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */,
 				93B2B55F240A46A5008941B2 /* DJTitleLabel.swift */,
-				93B2B567240A4E2F008941B2 /* PlantsSelectorViewController.swift */,
+				93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -242,10 +242,10 @@
 				93B2B55B240A44CB008941B2 /* UIViewController+Ext.swift in Sources */,
 				93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */,
 				93B2B55E240A464A008941B2 /* DJAlertVC.swift in Sources */,
-				93B2B568240A4E2F008941B2 /* PlantsSelectorViewController.swift in Sources */,
 				93B2B560240A46A5008941B2 /* DJTitleLabel.swift in Sources */,
 				93B2B559240A425C008941B2 /* Utilities.swift in Sources */,
 				93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */,
+				93BAC81F240B1C6600B63171 /* AddPlantsViewController.swift in Sources */,
 				938C37842407933300C274D6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,14 +1,14 @@
 //
-//  PlantsSelectorViewController.swift
+//  AddPlantsViewController.swift
 //  WaterMyPlant
 //
-//  Created by Lambda_School_Loaner_201 on 2/28/20.
+//  Created by Lambda_School_Loaner_201 on 2/29/20.
 //  Copyright © 2020 Christian Lorenzo. All rights reserved.
 //
 
 import UIKit
 
-class PlantsSelectorViewController: UIViewController {
+class AddPlantsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
