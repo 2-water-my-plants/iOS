@@ -9,10 +9,10 @@
 import Foundation
 
 struct User: Codable, Equatable {
-    let id: UInt
-    let username: String
-    let password: String
-    let phoneNumber: String
-    let message: String
+    let id: Int?
+    let username: String?
+    let password: String?
+    let phoneNumber: String?
+    let message: String?
     let token: String?
 }

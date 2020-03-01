@@ -9,5 +9,6 @@
 import Foundation
 
 struct Token: Codable {
-    let token: String
+    let id: Int?
+    let token: String?
 }

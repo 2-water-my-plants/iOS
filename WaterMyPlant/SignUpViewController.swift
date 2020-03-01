@@ -7,53 +7,61 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    private let signupController = SignupNetworking()
+    weak var delegate: LoginViewControllerDelegate?
+    
+    
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet private weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setupViews()
+        self.usernameTextField.delegate = self
+        self.phoneNumberTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
-        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !email.isEmpty,
+            let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !phoneNumber.isEmpty,
+            !username.isEmpty,
             !password.isEmpty else {
-                self.presentDJAlertOnMainThread(title: "Error Signing Up!", message: DJError.emptyEmailAndPasswordSignUp.rawValue, buttonTitle: "Ok")
+                let alert = UIAlertController(title: "Error Signing up!", message: "Please try again!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { _, error in
-            if error != nil {
-                if let errCode = AuthErrorCode(rawValue: error!.code) {
-                    switch errCode {
-                    case .invalidEmail:
-                        self.presentDJAlertOnMainThread(title: "Error Signing Up!", message: DJError.invalidEmail.rawValue, buttonTitle: "Ok")
-                    case .emailAlreadyInUse:
-                        self.presentDJAlertOnMainThread(title: "Error Signing Up!", message: DJError.emailAlreadyInUse.rawValue, buttonTitle: "Ok")
-                    case .emailTextField.text = ""
-                    default:
-                        self.presentDJAlertOnMainThread(title: "Error Signing Up!", message: DJError.generalSignUpError.rawValue, buttonTitle: "Ok")
-                    }
-                }
-            } else {
-                Auth.auth().signIn(withEmail: email, password: password) { _, error in
-                    if error == nil {
-                        guard let PlantsSelectorVC = self.storyboard?.instantiateViewController(identifier: "PlantsSelectorVC") as? PlantsSelectorViewController else { return }
-                        self.navigationController?.pushViewController(PlantsSelectorViewController, animated: true)
-                        self.view.window?.makeKeyAndVisible()
-                    }
+        //Create a signup form
+        
+        let signupRequest = SignupRequest(username: username, password: password, phoneNumber: phoneNumber)
+        
+        //disable the signup button after the signup request is created
+        
+        self.signUpButton.isEnabled = false
+        signupController.signUp(with: signupRequest) { (error) in
+            DispatchQueue.main.async {
+                if let _ = error {
+                    let alert = UIAlertController(title: "Houston we have a problem!", message: "Please try again!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    //Enable the signup button if there was an error
+                    
+                    self.signUpButton.isEnabled = true
+                    return
+                } else {
+                    self.delegate?.loginAfterSignup(with: LoginRequest(username: username, password: password))
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
@@ -62,11 +70,22 @@ class SignUpViewController: UIViewController {
 //MARK: Functions:
     
     func setupViews() {
-        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(phoneNumberTextField)
         Utilities.styleTextField(passwordTextField)
-        Utilities.styleTextField(firstNameTextField)
-        Utilities.styleTextField(lastNameTextField)
         Utilities.styleTextField(usernameTextField)
         Utilities.styleFilledButton(signUpButton)
+    }
+}
+
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextTextField = self.view.viewWithTag(textField.tag + 1) {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }
