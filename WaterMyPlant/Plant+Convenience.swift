@@ -26,9 +26,9 @@ extension Plant {
                      nickName: String? = nil,
                      id: String = UUID().uuidString,
                      startingDayOfWeek: StartingDayOfWeek = .sunday,
-                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                      wateringFrequency: String,
-                     time: String) {
+                     time: String,
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.species = species
         self.id = id
