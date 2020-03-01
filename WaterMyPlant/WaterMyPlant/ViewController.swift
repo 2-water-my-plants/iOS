@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var roundedRectView: UIView!
+    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     
@@ -25,9 +26,16 @@ class ViewController: UIViewController {
         
         configureViews()
         
-        // Comment out the following line to replace the video
-        // with the still photo per the original design
-        configureVideo()
+        let videoOption = 5
+        switch videoOption {
+        case 1: configureTopScreenVideo(named: "watering-house-plant", fileType: "mov")
+        case 2: configureFullScreenVideo(named: "green-leaves-in-rain", fileType: "mp4")
+        case 3: configureTopScreenVideo(named: "blue-water-droplet", fileType: "mp4")
+        case 4: configureTopScreenVideo(named: "water-droplet", fileType: "mp4")
+        case 5: configureTopScreenVideo(named: "flowers-blooming", fileType: "mp4")
+        default:
+            break
+        }
     }
     
     // MARK: - Private Methods
@@ -39,15 +47,33 @@ class ViewController: UIViewController {
         createAccountButton.layer.cornerRadius = 8.0
     }
     
-    private func configureVideo() {
-        // Video source: https://vimeo.com/209497584
-        // This video is for testing only
-        // We did not obtain legal permission to use this video in our app
-        let videoView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 264))
-        videoView.contentMode = .scaleAspectFit
-        view.addSubview(videoView)
+    private func configureTopScreenVideo(named fileName: String, fileType: String) {
+        let path = URL(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: fileType)!)
+        let player = AVPlayer(url: path)
+        player.isMuted = true
         
-        let path = URL(fileURLWithPath: Bundle.main.path(forResource: "716971753", ofType: "mp4")!)
+        let newLayer = AVPlayerLayer(player: player)
+        newLayer.frame = videoView.frame
+        videoView.layer.addSublayer(newLayer)
+        newLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        player.play()
+        player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ViewController.videoDidPlayToEnd(_:)),
+                                               name: NSNotification.Name("AVPlayerItemDidPlayToEndTimeNotification"),
+                                               object: player.currentItem)
+    }
+    
+    private func configureFullScreenVideo(named fileName: String, fileType: String) {
+        roundedRectView.backgroundColor = UIColor(red: 0.9882352941, green: 0.9921568627, blue: 0.9921568627, alpha: 0.86)
+        videoView.isHidden = true
+        let videoView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
+        view.addSubview(videoView)
+        view.sendSubviewToBack(videoView)
+        
+        let path = URL(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: fileType)!)
         let player = AVPlayer(url: path)
         player.isMuted = true
         
