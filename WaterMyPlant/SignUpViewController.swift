@@ -14,11 +14,9 @@ class SignUpViewController: UIViewController {
 
     weak var delegate: SignInViewControllerDelegate?
 
-    
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
@@ -59,7 +57,7 @@ class SignUpViewController: UIViewController {
         //disable the signup button after the signup request is created
         
         self.signUpButton.isEnabled = false
-        signupController.signUp(with: signupRequest) { (error) in
+        signupController.signUp(with: signupRequest) { error in
             DispatchQueue.main.async {
                 if let _ = error {
                     let alert = UIAlertController(title: "Houston we have a problem!", message: "Please try again!", preferredStyle: .alert)
@@ -78,7 +76,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-//MARK: Functions:
+    //MARK: - Functions:
     
     func setupViews() {
         Utilities.styleTextField(phoneNumberTextField)

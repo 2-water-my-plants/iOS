@@ -19,11 +19,11 @@ class SignInViewController: UIViewController {
     
     let loginController = LoginController.shared
     
-    @IBOutlet weak var signInUsernameTextField: UITextField!
+    @IBOutlet private weak var signInUsernameTextField: UITextField!
     
-    @IBOutlet weak var signInPasswordTextField: UITextField!
+    @IBOutlet private weak var signInPasswordTextField: UITextField!
     
-    @IBOutlet weak var singInButtonTapped: UIButton!
+    @IBOutlet private weak var singInButtonTapped: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,6 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-
     @IBAction func login(_ sender: UIButton) {
         guard let username = self.signInUsernameTextField.text, !username.isEmpty,
             let password = self.signInPasswordTextField.text, !password.isEmpty else { return }
@@ -61,8 +59,6 @@ class SignInViewController: UIViewController {
         }
     }
 
-            
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SignupSegue" {
             guard let vc = segue.destination as? SignUpViewController else { return }

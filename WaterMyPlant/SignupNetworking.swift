@@ -33,7 +33,7 @@ class SignupNetworking {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
                 completion(NSError(domain: "", code: response.statusCode, userInfo: nil))

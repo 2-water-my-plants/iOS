@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var roundedRectView: UIView!
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet private weak var roundedRectView: UIView!
+    @IBOutlet private weak var signInButton: UIButton!
+    @IBOutlet private weak var createAccountButton: UIButton!
     
     // MARK: - View Lifecycle
     
@@ -75,4 +75,3 @@ class ViewController: UIViewController {
     }
     
 }
-
