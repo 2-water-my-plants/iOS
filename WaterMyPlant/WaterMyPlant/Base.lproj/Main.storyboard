@@ -91,11 +91,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-
                                             <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ib-zv-hr3"/>
-
-                                            <segue destination="cCC-an-lvV" kind="show" id="RYc-et-g4p"/>
-
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-A1-fnA">
@@ -137,58 +133,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="137.4384236453202"/>
-        </scene>
-        <!--Sign In View Controller-->
-        <scene sceneID="m1N-mG-x00">
-            <objects>
-                <viewController id="cCC-an-lvV" customClass="SignInViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I6u-2d-lIz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-kh-xxz">
-                                <rect key="frame" x="25" y="199" width="334" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="31Y-nm-n6D">
-                                <rect key="frame" x="25" y="263" width="334" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sing In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6I-Ti-sdp">
-                                <rect key="frame" x="86" y="95" width="202" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8x-L2-Mwb">
-                                <rect key="frame" x="69" y="380" width="246" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Sing In"/>
-                                <connections>
-                                    <action selector="login:" destination="cCC-an-lvV" eventType="touchUpInside" id="xjv-3U-J25"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="O8P-OZ-jqF"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dm2-hV-eqr"/>
-                    <connections>
-                        <outlet property="signInPasswordTextField" destination="31Y-nm-n6D" id="LJp-Y2-LK8"/>
-                        <outlet property="signInUsernameTextField" destination="QSQ-kh-xxz" id="R9V-8n-m0V"/>
-                        <outlet property="singInButtonTapped" destination="m8x-L2-Mwb" id="elH-GO-6ge"/>
-                        <segue destination="x5Q-nk-iII" kind="presentation" identifier="SigninToDetailViewController" modalPresentationStyle="fullScreen" id="pgQ-0F-SLq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P2u-f7-ksi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1716" y="-167.73399014778326"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ia5-ey-cpU">
@@ -359,7 +303,6 @@
         <image name="mainLoginPhoto" width="456" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Vd-dY-QSN"/>
         <segue reference="zlX-c7-kBC"/>
     </inferredMetricsTieBreakers>
 </document>
