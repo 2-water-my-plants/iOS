@@ -11,7 +11,9 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     private let signupController = SignupNetworking()
+
     weak var delegate: SignInViewControllerDelegate?
+
     
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -29,6 +31,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
+
         guard let username = self.usernameTextField.text, !username.isEmpty,
             let password = self.passwordTextField.text, !password.isEmpty,
             let phoneNumber = self.phoneNumberTextField.text, !phoneNumber.isEmpty else {

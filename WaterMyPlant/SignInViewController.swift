@@ -8,7 +8,9 @@
 
 import UIKit
 
+
 protocol SignInViewControllerDelegate: AnyObject {
+
     func loginAfterSignup(with logingRequest: LoginRequest)
 }
 
@@ -53,10 +55,12 @@ class SignInViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "SigninToDetailViewController", sender: nil)
                     }
+
                 }
             }
         }
     }
+
             
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,4 +88,5 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return true
     }
+
 }
