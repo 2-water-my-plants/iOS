@@ -8,7 +8,9 @@
 
 import UIKit
 
-protocol LoginViewControllerDelegate: AnyObject {
+
+protocol SignInViewControllerDelegate: AnyObject {
+
     func loginAfterSignup(with logingRequest: LoginRequest)
 }
 
@@ -43,24 +45,48 @@ class SignInViewController: UIViewController {
     
     func login(with loginRequest: LoginRequest) {
         loginController.login(with: loginRequest) { error in
-            if let error = error {
-                NSLog("Error occured during login: \(error)")
-            } else {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "SigninToDetailViewController", sender: nil)
+            DispatchQueue.main.async {
+                if let error = error {
+                    let alert = UIAlertController(title: "Error Occured", message: "Check your Username and Password and try again!", preferredStyle: .alert)
+                    alert.addAction((UIAlertAction(title: "You Got it!", style: .default, handler: nil)))
+                    self.present(alert, animated: true, completion: nil)
+                    NSLog("Error occured during login: \(error)")
+                } else {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "SigninToDetailViewController", sender: nil)
+                    }
+
                 }
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+            
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "SignupSegue" {
+            guard let vc = segue.destination as? SignUpViewController else { return }
+            vc.delegate = self
+        }
     }
-    */
+}
+
+extension SignInViewController: SignInViewControllerDelegate {
+    func loginAfterSignup(with logingRequest: LoginRequest) {
+        DispatchQueue.main.async {
+            self.login(with: logingRequest)
+        }
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextTextField = self.view.viewWithTag(textField.tag + 1) {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 
 }

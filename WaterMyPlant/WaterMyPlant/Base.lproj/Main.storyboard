@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,11 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ib-zv-hr3"/>
+
                                             <segue destination="cCC-an-lvV" kind="show" id="RYc-et-g4p"/>
+
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-A1-fnA">
@@ -102,7 +106,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="GjZ-k4-WYR" kind="show" id="QKr-LA-4Z8"/>
+                                            <segue destination="GjZ-k4-WYR" kind="presentation" identifier="SignupSegue" modalPresentationStyle="fullScreen" id="0Vd-dY-QSN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -125,9 +129,9 @@
                     <navigationItem key="navigationItem" id="KaN-71-zVT"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="createAccountButton" destination="fNf-A1-fnA" id="Zpm-sd-o3l"/>
-                        <outlet property="roundedRectView" destination="Dol-pb-RRg" id="LbN-IR-SCt"/>
-                        <outlet property="signInButton" destination="zQ2-rz-GiE" id="zl5-4W-MBQ"/>
+                        <outlet property="signInPasswordTextField" destination="gcf-BG-HvC" id="MGF-n1-s3J"/>
+                        <outlet property="signInUsernameTextField" destination="Kl0-HZ-sRm" id="Qgl-rr-L46"/>
+                        <segue destination="x5Q-nk-iII" kind="presentation" identifier="SigninToDetailViewController" modalPresentationStyle="fullScreen" id="3Il-Vn-T60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -242,6 +246,22 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-Wa-f2q">
+                                <rect key="frame" x="16" y="379" width="332" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkD-fI-mCt">
+                                <rect key="frame" x="40" y="441" width="295" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="zlX-c7-kBC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -261,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD9-PW-WZZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="517"/>
+            <point key="canvasLocation" x="1752.8" y="136.69950738916256"/>
         </scene>
         <!--My Plants-->
         <scene sceneID="Zob-CX-bQW">
@@ -338,4 +358,8 @@
     <resources>
         <image name="mainLoginPhoto" width="456" height="321"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Vd-dY-QSN"/>
+        <segue reference="zlX-c7-kBC"/>
+    </inferredMetricsTieBreakers>
 </document>
