@@ -15,6 +15,7 @@
 		938C37892407933300C274D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C37872407933300C274D6 /* Main.storyboard */; };
 		938C378B2407934F00C274D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938C378A2407934F00C274D6 /* Assets.xcassets */; };
 		938C378E2407934F00C274D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C378C2407934F00C274D6 /* LaunchScreen.storyboard */; };
+		939DB119240CAB21006BCFD8 /* MyPlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */; };
 		93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B556240A400E008941B2 /* SignUpViewController.swift */; };
 		93B2B559240A425C008941B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B558240A425C008941B2 /* Utilities.swift */; };
 		93B2B55B240A44CB008941B2 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */; };
@@ -43,6 +44,7 @@
 		938C378A2407934F00C274D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938C378D2407934F00C274D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		938C378F2407934F00C274D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsTableViewController.swift; sourceTree = "<group>"; };
 		93B2B556240A400E008941B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		93B2B558240A425C008941B2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				93BAC829240B442D00B63171 /* APIModel.swift */,
 				93BAC82B240B448300B63171 /* SignupNetworking.swift */,
 				93BAC82D240B604400B63171 /* SignInViewController.swift */,
+				939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				93BAC82A240B442D00B63171 /* APIModel.swift in Sources */,
 				93B2B55E240A464A008941B2 /* DJAlertVC.swift in Sources */,
 				93B2B560240A46A5008941B2 /* DJTitleLabel.swift in Sources */,
+				939DB119240CAB21006BCFD8 /* MyPlantsTableViewController.swift in Sources */,
 				93B2B559240A425C008941B2 /* Utilities.swift in Sources */,
 				93BAC82C240B448300B63171 /* SignupNetworking.swift in Sources */,
 				93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */,

@@ -247,7 +247,7 @@
         <!--My Plants-->
         <scene sceneID="Zob-CX-bQW">
             <objects>
-                <tableViewController storyboardIdentifier="PlantsSelectorVC" id="U1N-Nb-cBm" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PlantsSelectorVC" id="U1N-Nb-cBm" customClass="MyPlantsTableViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="meD-2Z-Isk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve0-Se-Qeu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3740" y="137"/>
+            <point key="canvasLocation" x="852" y="933"/>
         </scene>
         <!--Add Plants View Controller-->
         <scene sceneID="xWT-aR-dJJ">
@@ -295,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Be-eE-AV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4713" y="-175"/>
+            <point key="canvasLocation" x="1753" y="933"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QU7-Rx-beC">
@@ -313,7 +313,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrs-vX-tki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="137"/>
+            <point key="canvasLocation" x="-58" y="933"/>
         </scene>
     </scenes>
     <resources>
