@@ -23,12 +23,12 @@ extension Plant {
     
     @discardableResult
     convenience init(species: String,
+                     h2oFrequency: String? = nil,
+                     time: String? = nil,
                      image: String? = nil,
                      nickName: String? = nil,
-                     id: String = UUID().uuidString,
                      startingDayOfWeek: StartingDayOfWeek = .sunday,
-                     h2oFrequency: String,
-                     time: String,
+                     id: String = UUID().uuidString,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
@@ -39,5 +39,22 @@ extension Plant {
         self.startingDayOfWeek = startingDayOfWeek.rawValue
         self.h2oFrequency = h2oFrequency
         self.time = time
+    }
+    
+    @discardableResult
+    convenience init?(plantRepresentation: PlantRepresentation,
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        guard let dayOfWeekString = plantRepresentation.startingDayOfWeek,
+            let startingDayOfWeek = StartingDayOfWeek(rawValue: dayOfWeekString),
+            let id = plantRepresentation.id else { return nil }
+        
+        self.init(species: plantRepresentation.species,
+                  h2oFrequency: plantRepresentation.h2oFrequency,
+                  time: plantRepresentation.time,
+                  image: plantRepresentation.image,
+                  nickName: plantRepresentation.nickName,
+                  startingDayOfWeek: startingDayOfWeek,
+                  id: id,
+                  context: context)
     }
 }
