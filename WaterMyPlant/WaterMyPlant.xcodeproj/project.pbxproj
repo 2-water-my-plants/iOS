@@ -13,6 +13,7 @@
 		63F3558C240D9B8C0025A42C /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3558B240D9B8C0025A42C /* Plant+Convenience.swift */; };
 		63F3558E240D9B920025A42C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3558D240D9B920025A42C /* CoreDataStack.swift */; };
 		63F3559B240DB1B80025A42C /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3559A240DB1B80025A42C /* PlantRepresentation.swift */; };
+		63F355A2240ED2670025A42C /* MyPlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F355A1240ED2670025A42C /* MyPlantsTableViewCell.swift */; };
 		938C37822407933300C274D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37812407933300C274D6 /* AppDelegate.swift */; };
 		938C37842407933300C274D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37832407933300C274D6 /* SceneDelegate.swift */; };
 		938C37862407933300C274D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37852407933300C274D6 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		63F3558B240D9B8C0025A42C /* Plant+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
 		63F3558D240D9B920025A42C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		63F3559A240DB1B80025A42C /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
+		63F355A1240ED2670025A42C /* MyPlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsTableViewCell.swift; sourceTree = "<group>"; };
 		938C377E2407933300C274D6 /* WaterMyPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterMyPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938C37812407933300C274D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		938C37832407933300C274D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		63F355A0240ED24F0025A42C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63F355A1240ED2670025A42C /* MyPlantsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6913E1931639962F48789F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		938C37752407933200C274D6 = {
 			isa = PBXGroup;
 			children = (
+				63F355A0240ED24F0025A42C /* Views */,
 				93BAC820240B2AFC00B63171 /* Model */,
 				93B2B55C240A4628008941B2 /* Alert */,
 				93B2B555240A3FD4008941B2 /* Controllers */,
@@ -279,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F355A2240ED2670025A42C /* MyPlantsTableViewCell.swift in Sources */,
 				93BAC822240B2B1700B63171 /* User.swift in Sources */,
 				63F3558E240D9B920025A42C /* CoreDataStack.swift in Sources */,
 				93BAC824240B2BAE00B63171 /* Token.swift in Sources */,

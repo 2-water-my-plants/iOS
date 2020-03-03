@@ -9,11 +9,12 @@
 import Foundation
 
 struct PlantRepresentation: Codable {
-    let species: String
+    let nickName: String
+    let species: String?
     let h2oFrequency: String?
     let time: String?
     let image: String?
-    let nickName: String?
-    let startingDayOfWeek: String?
+    let dateLastWatered: Date?
+    let prevDateLastWatered: Date?
     let id: String?
 }

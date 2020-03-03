@@ -254,55 +254,84 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" rowHeight="85" id="R1D-ig-3PS">
-                                <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" rowHeight="89" id="R1D-ig-3PS" customClass="MyPlantsTableViewCell" customModule="WaterMyPlant" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R1D-ig-3PS" id="paG-1K-n4c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leaf-plant-with-white-pot" translatesAutoresizingMaskIntoConstraints="NO" id="ohT-dP-vaW">
-                                            <rect key="frame" x="16" y="11" width="63" height="63"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-leaf-plant-with-white-pot" translatesAutoresizingMaskIntoConstraints="NO" id="ohT-dP-vaW">
+                                            <rect key="frame" x="16" y="11" width="67" height="67"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="ohT-dP-vaW" secondAttribute="height" multiplier="1:1" id="4oT-OM-KhF"/>
+                                                <constraint firstAttribute="width" constant="67" id="qiL-ru-Urw"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Office Desk Plant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-Xl-IWs">
-                                            <rect key="frame" x="87" y="11" width="139" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="0.1647058824" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aloe vera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-t9-61X">
-                                            <rect key="frame" x="87" y="33" width="64" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Water in 3 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Fj-FHO">
-                                            <rect key="frame" x="87" y="56" width="106" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Watered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-E1-dbg">
-                                            <rect key="frame" x="301" y="56" width="58" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-cU-QjS">
-                                            <rect key="frame" x="310" y="11" width="40" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                                            <state key="normal" image="checkmark.square" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48" scale="default" weight="medium"/>
-                                            </state>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bxE-Ds-ofJ">
+                                            <rect key="frame" x="91.000000000000014" y="11" width="202.33333333333337" height="67"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Desk Plant" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-Xl-IWs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="138.33333333333334" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.1647058824" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aloe vera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-t9-61X">
+                                                    <rect key="frame" x="0.0" y="23.333333333333336" width="64" height="20.333333333333336"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water in 3 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Fj-FHO">
+                                                    <rect key="frame" x="0.0" y="46.666666666666664" width="106" height="20.333333333333336"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tBb-Kh-Mc0">
+                                            <rect key="frame" x="301.33333333333331" y="11" width="57.666666666666686" height="64"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-cU-QjS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="57.666666666666664" height="42"/>
+                                                    <inset key="contentEdgeInsets" minX="2" minY="4" maxX="2" maxY="4"/>
+                                                    <state key="normal" image="checkmark.square.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32" scale="default" weight="medium"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="isWateredCheckBoxTapped:" destination="R1D-ig-3PS" eventType="touchUpInside" id="Yae-Jk-jJS"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-E1-dbg">
+                                                    <rect key="frame" x="0.0" y="46" width="57.666666666666664" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ohT-dP-vaW" firstAttribute="leading" secondItem="paG-1K-n4c" secondAttribute="leadingMargin" id="197-As-0mM"/>
+                                        <constraint firstItem="bxE-Ds-ofJ" firstAttribute="leading" secondItem="ohT-dP-vaW" secondAttribute="trailing" constant="8.0000000000000142" id="8ij-B3-Sjb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tBb-Kh-Mc0" secondAttribute="trailing" constant="1.1368683772161603e-13" id="F5j-yi-EgW"/>
+                                        <constraint firstItem="ohT-dP-vaW" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="LrH-7p-dcp"/>
+                                        <constraint firstItem="bxE-Ds-ofJ" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="SMj-TX-XKj"/>
+                                        <constraint firstItem="tBb-Kh-Mc0" firstAttribute="leading" secondItem="bxE-Ds-ofJ" secondAttribute="trailing" constant="8" id="cQt-BV-RNd"/>
+                                        <constraint firstItem="tBb-Kh-Mc0" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="yYA-HU-GNA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageView" destination="ohT-dP-vaW" id="Pbb-CP-644"/>
+                                    <outlet property="isWateredCheckBox" destination="bvX-cU-QjS" id="pGy-ag-rr7"/>
+                                    <outlet property="isWateredCheckBoxTapped" destination="bvX-cU-QjS" id="vFY-n1-X3v"/>
+                                    <outlet property="isWateredLabel" destination="4n3-E1-dbg" id="4h8-9R-MuE"/>
+                                    <outlet property="nameLabel" destination="rA0-Xl-IWs" id="jzQ-Fm-7o1"/>
+                                    <outlet property="speciesLabel" destination="lDh-t9-61X" id="C0g-NO-1gP"/>
+                                    <outlet property="waterCountdownLabel" destination="do5-Fj-FHO" id="FQH-Rf-tj7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -311,7 +340,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Plants" id="8ld-Wi-UJO">
-                        <barButtonItem key="rightBarButtonItem" title="Add Plant" id="0X8-rX-L4C">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0X8-rX-L4C">
                             <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="GT5-Gu-bHE" kind="show" id="LMT-Wg-GUO"/>
@@ -549,7 +578,7 @@
     </scenes>
     <resources>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
-        <image name="checkmark.square" catalog="system" width="64" height="56"/>
+        <image name="checkmark.square.fill" catalog="system" width="64" height="56"/>
         <image name="green-leaf-plant-with-white-pot" width="1008" height="1344"/>
         <image name="mainLoginPhoto" width="456" height="321"/>
     </resources>
