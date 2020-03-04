@@ -23,9 +23,22 @@ enum StartingDayOfWeek: String, CaseIterable, Codable {
 
 extension Plant {
     
+    var plantRepresentation: PlantRepresentation? {
+        guard let nickName = nickName else { return nil }
+        
+        return PlantRepresentation(nickName: nickName,
+                                   species: species,
+                                   h2oFrequency: h2oFrequency,
+                                   time: time,
+                                   image: image,
+                                   dateLastWatered: dateLastWatered,
+                                   prevDateLastWatered: prevDateLastWatered,
+                                   id: id)
+    }
+    
     @discardableResult
     convenience init(nickName: String,
-                     species: String?,
+                     species: String? = nil,
                      h2oFrequency: String? = nil,
                      time: String? = nil,
                      image: String? = nil,
