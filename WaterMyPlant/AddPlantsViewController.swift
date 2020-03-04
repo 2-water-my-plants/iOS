@@ -10,21 +10,44 @@ import UIKit
 
 class AddPlantsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Properties
 
-        // Do any additional setup after loading the view.
+    var plant: Plant? {
+        didSet {
+            updateViews()
+        }
     }
     
+    var plantController: PlantController!
+    
+    // MARK: - IBOutlets
+    
+    // Need to add IBOutlets here
+    
+    // MARK: - Lifecycle
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
     }
-    */
 
+    // MARK: - UpdateViews
+    
+    private func updateViews() {
+        guard isViewLoaded else { return }
+        
+        CoreDataStack.shared.mainContext.perform {
+            if let plant = self.plant {
+//                self.nickName = plant.nickName
+//                self.species = plant.species
+//                self.h2oFrequency = plant.h2oFrequency
+//                self.time = plant.time
+//                self.image = plant.image
+//                self.dateLastWatered = plant.dateLastWatered
+//                self.prevDateLastWatered = plant.prevDateLastWatered
+            } else {
+                self.title = self.plant?.nickName ?? "New Plant"
+            }
+        }
+    }
 }

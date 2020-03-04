@@ -583,7 +583,7 @@
         <image name="mainLoginPhoto" width="456" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zlX-c7-kBC"/>
+        <segue reference="QZp-Do-qg5"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
