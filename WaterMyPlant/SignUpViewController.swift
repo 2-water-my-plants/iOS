@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    //MARK: - Functions:
+    // MARK: - Functions:
     
     func setupViews() {
         Utilities.styleTextField(phoneNumberTextField)

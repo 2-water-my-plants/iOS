@@ -85,10 +85,33 @@ class AddPlantsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    private func showDateChooserAlert() {
+        let dateChooserAlert = UIAlertController(title: "When was this plant last watered?",
+                                                 message: "Select Date",
+                                                 preferredStyle: .actionSheet)
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.date = Date()
+        dateChooserAlert.view.addSubview(datePicker)
+        dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
+            let selectedDate = datePicker.date
+            let formatter = DateFormatter()
+            formatter.dateFormat = "E, MMM d, yyyy"
+            let dateLastWateredString = formatter.string(from: selectedDate)
+            self.lastWateredTextField.text = dateLastWateredString
+        }))
+        
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        dateChooserAlert.view.addConstraint(height)
+        
+        self.present(dateChooserAlert, animated: true, completion: nil)
+    }
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showDateChooserAlert()
         updateViews()
     }
 
@@ -133,7 +156,6 @@ class AddPlantsViewController: UIViewController {
                             
                             let nextWateringTextFieldString = formatter.string(from: nextWateringDate)
                             self.nextWateringTextField.text = nextWateringTextFieldString
-                            let date = formatter.date(from: nextWateringTextFieldString)
                         }
                     }
                 }

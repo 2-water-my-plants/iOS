@@ -42,6 +42,7 @@ class PlantController {
         sendPlantToServer(plant)
     }
     
+    // Create Plant from PlantRepresentation
     func createPlant(from plantRepresentation: PlantRepresentation) {
         createPlant(nickName: plantRepresentation.nickName,
                     species: plantRepresentation.species,
@@ -73,6 +74,7 @@ class PlantController {
         sendPlantToServer(plant)
     }
     
+    // Update Plant with PlantRepresentation
     func updatePlant(_ plant: Plant, with plantRepresentation: PlantRepresentation) {
         plant.nickName = plantRepresentation.nickName
         plant.species = plantRepresentation.species
@@ -83,14 +85,14 @@ class PlantController {
         plant.dateLastWatered = plantRepresentation.dateLastWatered
     }
     
-    // Update Plant when isWatered checkbox is checked
+    // Update Plant when isWatered checkbox is CHECKED
     func plantWasWateredToday(plant: Plant) {
         plant.prevDateLastWatered = plant.dateLastWatered
         plant.dateLastWatered = Date()
         sendPlantToServer(plant)
     }
     
-    // Update Plant when isWatered checkbox is unchecked
+    // Update Plant when isWatered checkbox is UNCHECKED
     func undoPlantWasWateredToday(plant: Plant) {
         plant.dateLastWatered = plant.prevDateLastWatered
         plant.prevDateLastWatered = nil
