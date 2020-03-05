@@ -78,7 +78,7 @@ class MyPlantsTableViewCell: UITableViewCell {
         }
     }
     
-    private func generatedWaterCountdownString(daysTillNextWater: Int) -> String {
+    internal func generatedWaterCountdownString(daysTillNextWater: Int) -> String {
         switch daysTillNextWater {
         case 0:
             return "Water today"
