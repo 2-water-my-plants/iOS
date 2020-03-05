@@ -24,17 +24,23 @@ class MyPlantsTableViewController: UITableViewController {
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                              managedObjectContext: moc,
-                                             sectionNameKeyPath: "dateLastWatered",
+                                             sectionNameKeyPath: nil, // "dateLastWatered",
                                              cacheName: nil)
         frc.delegate = self
-        try! frc.performFetch()
+        
+        do {
+            try frc.performFetch()
+        } catch {
+            fatalError("Error performing fetch for frc: \(error)")
+        }
+        
         return frc
     }()
     
     // MARK: - IBActions
     
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        plantController.fetchPlantsFromServer { (_) in
+        plantController.fetchPlantsFromServer { _ in
             self.refreshControl?.endRefreshing()
         }
     }
@@ -44,6 +50,7 @@ class MyPlantsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        //animateTable()
     }
 
     // MARK: - Table view data source
@@ -92,13 +99,43 @@ class MyPlantsTableViewController: UITableViewController {
             detailVC.plantController = plantController
         }
     }
+    
+    // MARK: - Animations
+
+    func animateTable() {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        
+        let tableViewHeight = tableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75,
+                           delay: Double(delayCounter) * 0.2,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseOut,
+                           animations: { cell.transform = CGAffineTransform.identity },
+                           completion: nil)
+            
+            delayCounter += 1
+        }
+    }
 }
 
-// MARK: - MyMoviesTableViewCell Delegate
+// MARK: - MyPlantTableViewCell Delegate
 
 extension MyPlantsTableViewController: MyPlantsTableViewCellDelegate {
-    func isWateredCheckBoxWasTapped() {
-        // TODO: Update dateLastWatered property to current date
+    func isWateredCheckBoxWasChecked(for plant: Plant) {
+        plantController.plantWasWateredToday(plant: plant)
+    }
+    
+    func isWateredCheckBoxWasUnchecked(for plant: Plant) {
+        plantController.undoPlantWasWateredToday(plant: plant)
     }
 }
 

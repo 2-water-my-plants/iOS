@@ -9,7 +9,8 @@
 import UIKit
 
 protocol MyPlantsTableViewCellDelegate: class {
-    func isWateredCheckBoxWasTapped()
+    func isWateredCheckBoxWasChecked(for plant: Plant)
+    func isWateredCheckBoxWasUnchecked(for plant: Plant)
 }
 
 class MyPlantsTableViewCell: UITableViewCell {
@@ -25,22 +26,25 @@ class MyPlantsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var plantImageView: UIImageView!
-    @IBOutlet weak var speciesLabel: UILabel!
-    @IBOutlet weak var waterCountdownLabel: UILabel!
-    @IBOutlet weak var isWateredCheckBox: UIButton!
-    @IBOutlet weak var isWateredLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var plantImageView: UIImageView!
+    @IBOutlet private weak var speciesLabel: UILabel!
+    @IBOutlet private weak var waterCountdownLabel: UILabel!
+    @IBOutlet private weak var isWateredCheckBox: UIButton!
+    @IBOutlet private weak var isWateredLabel: UILabel!
     
     // MARK: - IBActions
     
     @IBAction func isWateredCheckBoxTapped(_ sender: UIButton) {
+        guard let plant = plant else { return }
+        
         if isWateredCheckBox.currentImage == UIImage(systemName: "checkmark.square.fill") {
             isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
+            delegate?.isWateredCheckBoxWasUnchecked(for: plant)
         } else {
             isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            delegate?.isWateredCheckBoxWasChecked(for: plant)
         }
-        delegate?.isWateredCheckBoxWasTapped()
     }
     
     // MARK: - Private Methods
@@ -51,34 +55,26 @@ class MyPlantsTableViewCell: UITableViewCell {
         nameLabel.text = plant.nickName
         speciesLabel.text = plant.species
         
-        var daysTillNextWater: Int
-        
-        if let h2oFrequencyString = plant.h2oFrequency,
-            let h2oFrequencyInt = Int(h2oFrequencyString){
-            
-            if let dateLastWatered = plant.dateLastWatered {
-                let daysSinceLastWatered = Calendar.current.dateComponents([.day], from: dateLastWatered, to: Date()).day!
+        guard let daysSinceLastWatered = plant.daysSinceLastWatered else { return }
                 
-                // Update isWateredCheckBox
-                if daysSinceLastWatered == 0 {
-                    isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-                } else {
-                    isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
-                }
-                
-                daysTillNextWater = h2oFrequencyInt - daysSinceLastWatered
-            } else {
-                daysTillNextWater = 0
-            }
-            
-            // Update waterCountdownLabel
-            waterCountdownLabel.text = generatedWaterCountdownString(daysTillNextWater: daysTillNextWater)
+        // Update isWateredCheckBox
+        if daysSinceLastWatered == 0 {
+            isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
         } else {
+            isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
+        }
+        
+        // Update waterCountdownLabel
+        let daysTillNextWater = plant.daysTillNextWater ?? 0
+        
+        if plant.h2oFrequency == nil {
             waterCountdownLabel.text = "Watering frequency not specified"
+        } else {
+            waterCountdownLabel.text = waterCountdownString(from: daysTillNextWater)
         }
     }
     
-    private func generatedWaterCountdownString(daysTillNextWater: Int) -> String {
+    private func waterCountdownString(from daysTillNextWater: Int) -> String {
         switch daysTillNextWater {
         case 0:
             return "Water today"
