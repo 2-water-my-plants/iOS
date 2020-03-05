@@ -18,3 +18,12 @@ struct LoginRequest: Codable, Equatable {
     let username: String
     let password: String
 }
+
+struct GetPlants: Codable, Equatable {
+    var id: String?
+    var nickname: String?
+    var species: String?
+    var h2oFrequency: String?
+    var image: String?
+    var user_id: String?
+}

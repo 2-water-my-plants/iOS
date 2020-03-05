@@ -23,16 +23,15 @@ enum StartingDayOfWeek: String, CaseIterable, Codable {
 
 extension Plant {
     
-    @discardableResult
-    convenience init(nickName: String,
-                     species: String?,
-                     h2oFrequency: String? = nil,
-                     time: String? = nil,
-                     image: String? = nil,
-                     dateLastWatered: Date? = nil,
-                     prevDateLastWatered: Date? = nil,
-                     id: String = UUID().uuidString,
-                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init(nickName: String,
+                                        species: String?,
+                                        h2oFrequency: String? = nil,
+                                        time: String? = nil,
+                                        image: String? = nil,
+                                        dateLastWatered: Date? = nil,
+                                        prevDateLastWatered: Date? = nil,
+                                        id: String = UUID().uuidString,
+                                        context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
         self.nickName = nickName

@@ -38,6 +38,7 @@
 		93BAC82C240B448300B63171 /* SignupNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC82B240B448300B63171 /* SignupNetworking.swift */; };
 		93BAC82E240B604400B63171 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC82D240B604400B63171 /* SignInViewController.swift */; };
 		93CA2472240F68CC008A3253 /* WaterMyPlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA2471240F68CC008A3253 /* WaterMyPlantTests.swift */; };
+		93CA247A240F703A008A3253 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA2479240F703A008A3253 /* Plant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		93CA246F240F68CC008A3253 /* WaterMyPlantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterMyPlantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CA2471240F68CC008A3253 /* WaterMyPlantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMyPlantTests.swift; sourceTree = "<group>"; };
 		93CA2473240F68CC008A3253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CA2479240F703A008A3253 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C3F2CEFCC3DBC13279A01594 /* Pods_WaterMyPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterMyPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA241F44661EDB8B479E651E /* Pods-WaterMyPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.debug.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.debug.xcconfig"; sourceTree = "<group>"; };
 		E8025DFE080C992B1B33B350 /* Pods-WaterMyPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterMyPlant.release.xcconfig"; path = "Target Support Files/Pods-WaterMyPlant/Pods-WaterMyPlant.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				93BAC823240B2BAE00B63171 /* Token.swift */,
 				93BAC825240B2BF900B63171 /* Request.swift */,
 				63F3559A240DB1B80025A42C /* PlantRepresentation.swift */,
+				93CA2479240F703A008A3253 /* Plant.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				939DB119240CAB21006BCFD8 /* MyPlantsTableViewController.swift in Sources */,
 				63F3559B240DB1B80025A42C /* PlantRepresentation.swift in Sources */,
 				93B2B559240A425C008941B2 /* Utilities.swift in Sources */,
+				93CA247A240F703A008A3253 /* Plant.swift in Sources */,
 				93BAC82C240B448300B63171 /* SignupNetworking.swift in Sources */,
 				63F3558C240D9B8C0025A42C /* Plant+Convenience.swift in Sources */,
 				93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */,
