@@ -11,12 +11,12 @@ import CoreData
 
 class CoreDataStack {
     static let shared = CoreDataStack()
-    private init() {}
+    // private init(){}
     
     // Creates Persistent Store Manager and loads Persistent Stores
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "WaterMyPlant")
-        container.loadPersistentStores { (_, error) in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Failed to load persistent stores: \(error)")
             }
