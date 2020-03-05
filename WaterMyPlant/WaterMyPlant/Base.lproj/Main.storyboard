@@ -324,11 +324,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageView" destination="ohT-dP-vaW" id="Pbb-CP-644"/>
                                     <outlet property="isWateredCheckBox" destination="bvX-cU-QjS" id="pGy-ag-rr7"/>
                                     <outlet property="isWateredCheckBoxTapped" destination="bvX-cU-QjS" id="vFY-n1-X3v"/>
                                     <outlet property="isWateredLabel" destination="4n3-E1-dbg" id="4h8-9R-MuE"/>
                                     <outlet property="nameLabel" destination="rA0-Xl-IWs" id="jzQ-Fm-7o1"/>
+                                    <outlet property="plantImageView" destination="ohT-dP-vaW" id="pYc-nv-kk2"/>
                                     <outlet property="speciesLabel" destination="lDh-t9-61X" id="C0g-NO-1gP"/>
                                     <outlet property="waterCountdownLabel" destination="do5-Fj-FHO" id="FQH-Rf-tj7"/>
                                     <segue destination="GT5-Gu-bHE" kind="show" identifier="ShowPlantDetailSegue" id="dGu-fd-aml"/>
