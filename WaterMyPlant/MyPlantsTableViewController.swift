@@ -74,7 +74,7 @@ class MyPlantsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = fetchedResultsController.sections?[section]
-        return sectionInfo?.name
+        return sectionInfo?.name.capitalized
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -87,7 +87,7 @@ class MyPlantsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? AddPlantsViewController else { return }
+        guard let detailVC = segue.destination as? PlantDetailViewController else { return }
         
         if segue.identifier == "ShowPlantDetailSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -127,7 +127,7 @@ class MyPlantsTableViewController: UITableViewController {
     }
 }
 
-// MARK: - MyPlantTableViewCell Delegate
+// MARK: - MyPlantsTVCell Delegate
 
 extension MyPlantsTableViewController: MyPlantsTableViewCellDelegate {
     func isWateredCheckBoxWasChecked(for plant: Plant) {
@@ -139,7 +139,7 @@ extension MyPlantsTableViewController: MyPlantsTableViewCellDelegate {
     }
 }
 
-// MARK: - NSFetchedResultsController Delegate
+// MARK: - FRC Delegate
 
 extension MyPlantsTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
