@@ -20,16 +20,19 @@ class PlantController {
         fetchPlantsFromServer()
     }
     
-    // MARK: - Public CRUD Methods
+    // MARK: - CRUD: Public
+    // CREATE, UPDATE, and DELETE functionality implemented
+    // for Plant model object persistence using Core Data
     
-    // Create Plant
-    func createPlant(nickName: String,
+    // MARK: - CREATE
+    
+    @discardableResult func createPlant(nickName: String,
                      species: String? = nil,
                      h2oFrequency: String? = nil,
                      image: String? = nil,
                      notificationsEnabled: Bool = false,
                      notificationTime: String? = nil,
-                     dateLastWatered: Date? = nil) {
+                     dateLastWatered: Date? = nil) -> Plant {
         
         let plant = Plant(nickName: nickName,
                           species: species,
@@ -39,21 +42,29 @@ class PlantController {
                           notificationTime: notificationTime,
                           dateLastWatered: dateLastWatered)
         
-        sendPlantToServer(plant)
+        do {
+            try CoreDataStack.shared.save()
+            postPlantToServer(plant)
+        } catch {
+            print("Error saving new plant (id: \"\(plant.id ?? "")\") to persistent store: \(error)")
+        }
+        
+        return plant
     }
     
-    // Create Plant from PlantRepresentation
-    func createPlant(from plantRepresentation: PlantRepresentation) {
-        createPlant(nickName: plantRepresentation.nickName,
+    @discardableResult func createPlant(from plantRepresentation: PlantRepresentation) -> Plant {
+        let plant = createPlant(nickName: plantRepresentation.nickName,
                     species: plantRepresentation.species,
                     h2oFrequency: plantRepresentation.h2oFrequency,
                     image: plantRepresentation.image,
                     notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
                     notificationTime: plantRepresentation.notificationTime,
                     dateLastWatered: plantRepresentation.dateLastWatered)
+        return plant
     }
     
-    // Update Plant
+    // MARK: - UPDATE
+    
     func updatePlant(_ plant: Plant,
                      withNickName nickName: String,
                      species: String?,
@@ -71,58 +82,81 @@ class PlantController {
         plant.notificationTime = notificationTime
         plant.dateLastWatered = dateLastWatered
 
-        sendPlantToServer(plant)
-    }
-    
-    // Update Plant with PlantRepresentation
-    func updatePlant(_ plant: Plant, with plantRepresentation: PlantRepresentation) {
-        plant.nickName = plantRepresentation.nickName
-        plant.species = plantRepresentation.species
-        plant.h2oFrequency = plantRepresentation.h2oFrequency
-        plant.notificationsEnabled = plantRepresentation.notificationsEnabled ?? false
-        plant.notificationTime = plantRepresentation.notificationTime
-        plant.image = plantRepresentation.image
-        plant.dateLastWatered = plantRepresentation.dateLastWatered
-    }
-    
-    // Update Plant when isWatered checkbox is CHECKED
-    func plantWasWateredToday(plant: Plant) {
-        plant.prevDateLastWatered = plant.dateLastWatered
-        plant.dateLastWatered = Date()
-        sendPlantToServer(plant)
-    }
-    
-    // Update Plant when isWatered checkbox is UNCHECKED
-    func undoPlantWasWateredToday(plant: Plant) {
-        plant.dateLastWatered = plant.prevDateLastWatered
-        plant.prevDateLastWatered = nil
-        sendPlantToServer(plant)
-    }
-    
-    // Delete Plant
-    func deletePlant(_ plant: Plant) {
-        deletePlantFromServer(plant) { error in
-            guard error == nil else {
-                print("Error deleting plant from server: \(error!)")
-                return
-            }
-            
-            guard let moc = plant.managedObjectContext else { return }
-            
-            do {
-                moc.delete(plant)
-                try CoreDataStack.shared.save(context: moc)
-            } catch {
-                moc.reset()
-                print("Error deleting plant from managed object context: \(error)")
-            }
+        do {
+            try CoreDataStack.shared.save()
+            postPlantToServer(plant)
+        } catch {
+            print("Error saving updated plant (id: \"\(plant.id ?? "")\") to persistent store: \(error)")
         }
     }
     
-    // MARK: - Public Server API Methods
+    func updatePlant(_ plant: Plant, with plantRepresentation: PlantRepresentation) {
+        updatePlant(plant,
+                    withNickName: plantRepresentation.nickName,
+                    species: plantRepresentation.species,
+                    h2oFrequency: plantRepresentation.h2oFrequency,
+                    image: plantRepresentation.image,
+                    notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
+                    notificationTime: plantRepresentation.notificationTime,
+                    dateLastWatered: plantRepresentation.dateLastWatered)
+    }
+    
+    func plantWasWateredToday(plant: Plant) {
+        plant.prevDateLastWatered = plant.dateLastWatered
+        plant.dateLastWatered = Date()
+        
+        do {
+            try CoreDataStack.shared.save()
+            postPlantToServer(plant)
+        } catch {
+            print("Error saving updated plant (id: \"\(plant.id ?? "")\") to persistent store: \(error)")
+        }
+    }
+    
+    func undoPlantWasWateredToday(plant: Plant) {
+        plant.dateLastWatered = plant.prevDateLastWatered
+        plant.prevDateLastWatered = nil
+        
+        do {
+            try CoreDataStack.shared.save()
+            postPlantToServer(plant)
+        } catch {
+            print("Error saving updated plant (id: \"\(plant.id ?? "")\") to persistent store: \(error)")
+        }
+    }
+    
+    // MARK: - DELETE
+    
+    func deletePlant(_ plant: Plant) {
+        let moc = CoreDataStack.shared.mainContext
+        
+        do {
+            moc.delete(plant)
+            try CoreDataStack.shared.save()
+        } catch {
+            moc.reset()
+            print("Error deleting plant (id: \"\(plant.id ?? "")\") from persistent store: \(error)")
+        }
+        
+        deletePlantFromServer(plant) { error in
+            if let error = error {
+                print("Plant (id: \"\(plant.id ?? "")\") successfully deleted from persistent store.")
+                print("Error deleting plant (id: \"\(plant.id ?? "")\") from server: \(error)")
+                return
+            }
+        }
+    }
+}
+
+// MARK: - Server Sync
+
+extension PlantController {
+    
+    // MARK: - Server API: Public
     
     func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
-        let requestURL = baseURL.appendingPathComponent("auth/myplants")
+        let requestURL = baseURL
+            .appendingPathComponent("auth/myplants")
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -147,11 +181,12 @@ class PlantController {
             }
             
             let jsonDecoder = JSONDecoder()
+            jsonDecoder.dateDecodingStrategy = .secondsSince1970
             
             do {
                 let plantRepresentations = Array(try jsonDecoder.decode([String: PlantRepresentation].self, from: data).values)
                 
-                try self.updatePlant(with: plantRepresentations)
+                try self.updatePlants(with: plantRepresentations)
                 DispatchQueue.main.async {
                     completion(nil)
                 }
@@ -164,9 +199,9 @@ class PlantController {
         }.resume()
     }
     
-    // MARK: - Private Server API Methods
+    // MARK: - Server API: Private
     
-    private func sendPlantToServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
+    private func postPlantToServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
         guard let token = LoginController.shared.token else {
             completion(.noAuth)
             return
@@ -177,7 +212,8 @@ class PlantController {
             return
         }
         
-        let requestURL = baseURL.appendingPathComponent("auth/myplants")
+        let requestURL = baseURL
+            .appendingPathComponent("auth/myplants")
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -185,18 +221,20 @@ class PlantController {
         request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = HTTPMethod.post.rawValue
         
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.dateEncodingStrategy = .secondsSince1970
+        
         do {
-            try CoreDataStack.shared.save()
-            request.httpBody = try JSONEncoder().encode(representation)
+            request.httpBody = try jsonEncoder.encode(representation)
         } catch {
-            print("Error encoding plant: \(error)")
+            print("Error encoding plant (id: \"\(plant.id ?? "")\"): \(error)")
             completion(.encodingError)
             return
         }
         
         URLSession.shared.dataTask(with: request) { _, response, error in
             guard error == nil else {
-                print("Error POSTing new plant to server: \(error!)")
+                print("Error POSTing new plant (id: \"\(plant.id ?? "")\") to server: \(error!)")
                 DispatchQueue.main.async {
                     completion(.otherError)
                 }
@@ -223,12 +261,14 @@ class PlantController {
             return
         }
         
-        guard plant.id != nil else {
+        guard let id = plant.id else {
             completion(.otherError)
             return
         }
         
-        let requestURL = baseURL.appendingPathComponent("auth/myplants")
+        let requestURL = baseURL
+            .appendingPathComponent("auth/myplants")
+            .appendingPathComponent(id)
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -238,7 +278,7 @@ class PlantController {
         
         URLSession.shared.dataTask(with: request) { _, _, error in
             guard error == nil else {
-                print("Error deleting plant from server: \(error!)")
+                print("Error deleting plant (id: \"\(plant.id ?? "")\") from server: \(error!)")
                 DispatchQueue.main.async {
                     completion(.otherError)
                 }
@@ -251,9 +291,9 @@ class PlantController {
         }.resume()
     }
     
-    // MARK: - API Helper Methods
+    // MARK: - Server API: Helpers
     
-    private func updatePlant(with representations: [PlantRepresentation]) throws {
+    private func updatePlants(with representations: [PlantRepresentation]) throws {
         let representationsWithID = representations.filter { $0.id != nil }
         let identifiersToFetch = representationsWithID.compactMap { $0.id! }
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representationsWithID))
@@ -265,7 +305,7 @@ class PlantController {
         let context = CoreDataStack.shared.mainContext
         
         do {
-            // Delete existing plants in CoreData not found in server database
+            // Delete any plants (in persistent store) that do not exist in the server database
             let allExistingPlants = try context.fetch(Plant.fetchRequest()) as? [Plant]
             let plantsToDelete = allExistingPlants!.filter { !identifiersToFetch.contains($0.id!) }
             
@@ -273,7 +313,7 @@ class PlantController {
                 context.delete(plant)
             }
             
-            // Update existing plants found in server database
+            // Update any plants (in persistent store) that also exist in the server database
             let existingPlants = try context.fetch(fetchRequest)
             
             for plant in existingPlants {
@@ -284,12 +324,12 @@ class PlantController {
                 plantsToCreate.removeValue(forKey: id)
             }
             
-            // Create new entries from server database and add to Core Data
+            // Create new plants (in persistent store) that only exist in the server database
             for representation in plantsToCreate.values {
                 Plant(plantRepresentation: representation, context: context)
             }
         } catch {
-            print("Error fetching plant for id: \(error)")
+            print("Error fetching plants from persistent store: \(error)")
         }
         
         try CoreDataStack.shared.save(context: context)

@@ -12,15 +12,28 @@ class PlantDetailViewController: UIViewController {
 
     // MARK: - Properties
 
+    var plantController: PlantController!
+    
     var plant: Plant? {
         didSet {
             updateViews()
         }
     }
     
-    var imageData: Data?
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, MMM d, yyyy"
+        return dateFormatter
+    }()
     
-    var plantController: PlantController!
+    let timeFormatter: DateFormatter = {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        return timeFormatter
+    }()
+    
+    let defaultImageName = "green-leaf-plant-with-white-pot"
+    var imageData: Data?
     
     // MARK: - IBOutlets
     
@@ -57,15 +70,13 @@ class PlantDetailViewController: UIViewController {
         
         var dateLastWatered: Date?
         if let dateLastWateredString = lastWateredTextField.text {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E, MMM d, yyyy"
             dateLastWatered = dateFormatter.date(from: dateLastWateredString)
         }
         
         let plantRepresentation = PlantRepresentation(nickName: nickName,
                                                       species: species,
                                                       h2oFrequency: h2oFrequency,
-                                                      image: "green-leaf-plant-with-white-pot",
+                                                      image: defaultImageName,
                                                       id: nil,
                                                       notificationsEnabled: notificationsEnabled,
                                                       notificationTime: notificationTime,
@@ -92,11 +103,10 @@ class PlantDetailViewController: UIViewController {
         dateChooserAlert.view.addSubview(datePicker)
         dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
             let selectedDate = datePicker.date
-            let formatter = DateFormatter()
-            formatter.dateFormat = "E, MMM d, yyyy"
-            let dateLastWateredString = formatter.string(from: selectedDate)
-            self.lastWateredTextField.text = dateLastWateredString
+            self.lastWateredTextField.text = self.dateFormatter.string(from: selectedDate)
         }))
+        
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             datePicker.heightAnchor.constraint(equalTo: dateChooserAlert.view.heightAnchor, constant: -40)
@@ -110,11 +120,7 @@ class PlantDetailViewController: UIViewController {
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
-        datePicker.maximumDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, MMM d, yyyy"
-        let dateLastWateredString = formatter.string(from: selectedDate)
-        self.lastWateredTextField.text = dateLastWateredString
+        self.lastWateredTextField.text = dateFormatter.string(from: selectedDate)
         view.endEditing(true)
     }
     
@@ -127,6 +133,7 @@ class PlantDetailViewController: UIViewController {
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
         datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
         lastWateredTextField.inputView = datePicker
         
@@ -182,7 +189,7 @@ class PlantDetailViewController: UIViewController {
                 if let imageData = self.imageData {
                     self.plantImageView.image = UIImage(data: imageData)
                 } else {
-                    self.plantImageView.image = UIImage(named: "green-leaf-plant-with-white-pot")
+                    self.plantImageView.image = UIImage(named: self.defaultImageName)
                 }
             }
         }
