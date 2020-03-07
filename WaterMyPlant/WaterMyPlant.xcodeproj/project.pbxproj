@@ -14,6 +14,7 @@
 		63F3558E240D9B920025A42C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3558D240D9B920025A42C /* CoreDataStack.swift */; };
 		63F3559B240DB1B80025A42C /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3559A240DB1B80025A42C /* PlantRepresentation.swift */; };
 		63F355A2240ED2670025A42C /* MyPlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F355A1240ED2670025A42C /* MyPlantsTableViewCell.swift */; };
+		63F355A5240F90B80025A42C /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F355A4240F90B80025A42C /* PlantController.swift */; };
 		938C37822407933300C274D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37812407933300C274D6 /* AppDelegate.swift */; };
 		938C37842407933300C274D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37832407933300C274D6 /* SceneDelegate.swift */; };
 		938C37862407933300C274D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C37852407933300C274D6 /* ViewController.swift */; };
@@ -29,7 +30,7 @@
 		93B2B562240A4797008941B2 /* DJErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B561240A4797008941B2 /* DJErrorMessage.swift */; };
 		93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B563240A480D008941B2 /* DJBodyLabel.swift */; };
 		93B2B566240A49DF008941B2 /* DJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B565240A49DF008941B2 /* DJButton.swift */; };
-		93BAC81F240B1C6600B63171 /* AddPlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */; };
+		93BAC81F240B1C6600B63171 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC81E240B1C6600B63171 /* PlantDetailViewController.swift */; };
 		93BAC822240B2B1700B63171 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC821240B2B1700B63171 /* User.swift */; };
 		93BAC824240B2BAE00B63171 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC823240B2BAE00B63171 /* Token.swift */; };
 		93BAC826240B2BF900B63171 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BAC825240B2BF900B63171 /* Request.swift */; };
@@ -58,6 +59,7 @@
 		63F3558D240D9B920025A42C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		63F3559A240DB1B80025A42C /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
 		63F355A1240ED2670025A42C /* MyPlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsTableViewCell.swift; sourceTree = "<group>"; };
+		63F355A4240F90B80025A42C /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
 		938C377E2407933300C274D6 /* WaterMyPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterMyPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938C37812407933300C274D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		938C37832407933300C274D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 		93B2B561240A4797008941B2 /* DJErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJErrorMessage.swift; sourceTree = "<group>"; };
 		93B2B563240A480D008941B2 /* DJBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJBodyLabel.swift; sourceTree = "<group>"; };
 		93B2B565240A49DF008941B2 /* DJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJButton.swift; sourceTree = "<group>"; };
-		93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantsViewController.swift; sourceTree = "<group>"; };
+		93BAC81E240B1C6600B63171 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		93BAC821240B2B1700B63171 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		93BAC823240B2BAE00B63171 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		93BAC825240B2BF900B63171 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		63F355A3240F90840025A42C /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63F355A4240F90B80025A42C /* PlantController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		6913E1931639962F48789F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		938C37752407933200C274D6 = {
 			isa = PBXGroup;
 			children = (
+				63F355A3240F90840025A42C /* Model Controllers */,
 				63F355A0240ED24F0025A42C /* Views */,
 				93BAC820240B2AFC00B63171 /* Model */,
 				93B2B55C240A4628008941B2 /* Alert */,
@@ -182,7 +193,7 @@
 				93B2B558240A425C008941B2 /* Utilities.swift */,
 				93B2B55A240A44CB008941B2 /* UIViewController+Ext.swift */,
 				93B2B55F240A46A5008941B2 /* DJTitleLabel.swift */,
-				93BAC81E240B1C6600B63171 /* AddPlantsViewController.swift */,
+				93BAC81E240B1C6600B63171 /* PlantDetailViewController.swift */,
 				93BAC827240B43E300B63171 /* LoginController.swift */,
 				93BAC829240B442D00B63171 /* APIModel.swift */,
 				93BAC82B240B448300B63171 /* SignupNetworking.swift */,
@@ -379,8 +390,9 @@
 				63F3558C240D9B8C0025A42C /* Plant+Convenience.swift in Sources */,
 				93B2B564240A480D008941B2 /* DJBodyLabel.swift in Sources */,
 				93BAC828240B43E400B63171 /* LoginController.swift in Sources */,
-				93BAC81F240B1C6600B63171 /* AddPlantsViewController.swift in Sources */,
+				93BAC81F240B1C6600B63171 /* PlantDetailViewController.swift in Sources */,
 				938C37842407933300C274D6 /* SceneDelegate.swift in Sources */,
+				63F355A5240F90B80025A42C /* PlantController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

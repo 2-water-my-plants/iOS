@@ -20,4 +20,6 @@ enum NetworkError: Error {
     case badAuth
     case otherError
     case badData
+    case decodingError
+    case encodingError
 }
