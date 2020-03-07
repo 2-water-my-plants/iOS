@@ -66,7 +66,7 @@ class PlantController {
     }
     
     // MARK: - UPDATE
-    
+    // swiftlint:disable all
     func updatePlant(_ plant: Plant,
                      withNickName nickName: String,
                      species: String?,
@@ -93,7 +93,7 @@ class PlantController {
             print("Error saving updated plant (id: \"\(plant.id ?? "")\") to persistent store: \(error)")
         }
     }
-    
+  // swiftlint:enable all
     func updatePlant(_ plant: Plant, with plantRepresentation: PlantRepresentation) {
         updatePlant(plant,
                     withNickName: plantRepresentation.nickName,
