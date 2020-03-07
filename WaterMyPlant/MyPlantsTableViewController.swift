@@ -94,16 +94,24 @@ class MyPlantsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? PlantDetailViewController else { return }
         
-        if segue.identifier == "ShowPlantDetailSegue" {
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        switch segue.identifier {
             
+        case "ShowPlantDetailSegue":
+            guard let detailVC = segue.destination as? PlantDetailViewController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.plant = fetchedResultsController.object(at: indexPath)
             detailVC.plantController = plantController
             
-        } else if segue.identifier == "ShowAddPlantSegue" {
+        case "ShowAddPlantSegue":
+            guard let detailVC = segue.destination as? PlantDetailViewController else { return }
             detailVC.plantController = plantController
+            
+        //case "ModalUserProfileSegue":
+            //guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
+            
+        default:
+            break
         }
     }
     
