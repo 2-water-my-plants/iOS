@@ -18,8 +18,8 @@ class MyPlantsTableViewController: UITableViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "dateLastWatered", ascending: true),
-            NSSortDescriptor(key: "nickName", ascending: true)
+//            NSSortDescriptor(key: "dateLastWatered", ascending: true),
+//            NSSortDescriptor(key: "nickName", ascending: true)
         ]
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
