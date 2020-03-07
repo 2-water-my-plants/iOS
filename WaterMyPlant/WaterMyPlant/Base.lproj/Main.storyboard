@@ -319,13 +319,13 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="tBb-Kh-Mc0" secondAttribute="trailing" constant="1.1368683772161603e-13" id="F5j-yi-EgW"/>
                                         <constraint firstItem="ohT-dP-vaW" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="LrH-7p-dcp"/>
                                         <constraint firstItem="bxE-Ds-ofJ" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="SMj-TX-XKj"/>
+                                        <constraint firstAttribute="bottom" secondItem="bxE-Ds-ofJ" secondAttribute="bottom" priority="250" constant="20" symbolic="YES" id="aTt-AT-uKp"/>
                                         <constraint firstItem="tBb-Kh-Mc0" firstAttribute="leading" secondItem="bxE-Ds-ofJ" secondAttribute="trailing" constant="8" id="cQt-BV-RNd"/>
                                         <constraint firstItem="tBb-Kh-Mc0" firstAttribute="top" secondItem="paG-1K-n4c" secondAttribute="topMargin" id="yYA-HU-GNA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="isWateredCheckBox" destination="bvX-cU-QjS" id="pGy-ag-rr7"/>
-                                    <outlet property="isWateredCheckBoxTapped" destination="bvX-cU-QjS" id="vFY-n1-X3v"/>
                                     <outlet property="isWateredLabel" destination="4n3-E1-dbg" id="4h8-9R-MuE"/>
                                     <outlet property="nameLabel" destination="rA0-Xl-IWs" id="jzQ-Fm-7o1"/>
                                     <outlet property="plantImageView" destination="ohT-dP-vaW" id="pYc-nv-kk2"/>
@@ -349,6 +349,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="pie-l7-JPh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh:" destination="U1N-Nb-cBm" eventType="valueChanged" id="Wck-BQ-WWb"/>
