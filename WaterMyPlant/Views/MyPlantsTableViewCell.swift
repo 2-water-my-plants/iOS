@@ -70,11 +70,11 @@ class MyPlantsTableViewCell: UITableViewCell {
         if plant.h2oFrequency == nil {
             waterCountdownLabel.text = "Watering frequency not specified"
         } else {
-            waterCountdownLabel.text = waterCountdownString(from: daysTillNextWater)
+            waterCountdownLabel.text = generatedWaterCountdownString(daysTillNextWater: daysTillNextWater)
         }
     }
     
-    private func waterCountdownString(from daysTillNextWater: Int) -> String {
+    func generatedWaterCountdownString(daysTillNextWater: Int) -> String {
         switch daysTillNextWater {
         case 0:
             return "Water today"

@@ -18,8 +18,8 @@ class MyPlantsTableViewController: UITableViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "dateLastWatered", ascending: true),
-            NSSortDescriptor(key: "nickName", ascending: true)
+//            NSSortDescriptor(key: "dateLastWatered", ascending: true),
+//            NSSortDescriptor(key: "nickName", ascending: true)
         ]
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -46,6 +46,13 @@ class MyPlantsTableViewController: UITableViewController {
     }
     
     // MARK: - Table View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 89
+        tableView.reloadData()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

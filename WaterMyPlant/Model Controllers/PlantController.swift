@@ -6,7 +6,7 @@
 //  Copyright © 2020 Christian Lorenzo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 //let baseURL = URL(string: "https://journal-693f9.firebaseio.com/")!
@@ -27,17 +27,19 @@ class PlantController {
     // MARK: - CREATE
     
     @discardableResult func createPlant(nickName: String,
-                     species: String? = nil,
-                     h2oFrequency: String? = nil,
-                     image: String? = nil,
-                     notificationsEnabled: Bool = false,
-                     notificationTime: String? = nil,
-                     dateLastWatered: Date? = nil) -> Plant {
+                                        species: String? = nil,
+                                        h2oFrequency: String? = nil,
+                                        image: String? = nil,
+                                        localImageData: Data? = nil,
+                                        notificationsEnabled: Bool = false,
+                                        notificationTime: String? = nil,
+                                        dateLastWatered: Date? = nil) -> Plant {
         
         let plant = Plant(nickName: nickName,
                           species: species,
                           h2oFrequency: h2oFrequency,
                           image: image,
+                          localImageData: localImageData,
                           notificationsEnabled: notificationsEnabled,
                           notificationTime: notificationTime,
                           dateLastWatered: dateLastWatered)
@@ -54,12 +56,12 @@ class PlantController {
     
     @discardableResult func createPlant(from plantRepresentation: PlantRepresentation) -> Plant {
         let plant = createPlant(nickName: plantRepresentation.nickName,
-                    species: plantRepresentation.species,
-                    h2oFrequency: plantRepresentation.h2oFrequency,
-                    image: plantRepresentation.image,
-                    notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
-                    notificationTime: plantRepresentation.notificationTime,
-                    dateLastWatered: plantRepresentation.dateLastWatered)
+                                species: plantRepresentation.species,
+                                h2oFrequency: plantRepresentation.h2oFrequency,
+                                image: plantRepresentation.image,
+                                notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
+                                notificationTime: plantRepresentation.notificationTime,
+                                dateLastWatered: plantRepresentation.dateLastWatered)
         return plant
     }
     
@@ -70,14 +72,16 @@ class PlantController {
                      species: String?,
                      h2oFrequency: String?,
                      image: String?,
+                     localImageData: Data?,
                      notificationsEnabled: Bool,
                      notificationTime: String?,
                      dateLastWatered: Date?) {
-        
+
         plant.nickName = nickName
         plant.species = species
         plant.h2oFrequency = h2oFrequency
         plant.image = image
+        plant.localImageData = localImageData
         plant.notificationsEnabled = notificationsEnabled
         plant.notificationTime = notificationTime
         plant.dateLastWatered = dateLastWatered
@@ -96,6 +100,7 @@ class PlantController {
                     species: plantRepresentation.species,
                     h2oFrequency: plantRepresentation.h2oFrequency,
                     image: plantRepresentation.image,
+                    localImageData: plant.localImageData,
                     notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
                     notificationTime: plantRepresentation.notificationTime,
                     dateLastWatered: plantRepresentation.dateLastWatered)
@@ -195,6 +200,43 @@ extension PlantController {
                 DispatchQueue.main.async {
                     completion(.decodingError)
                 }
+            }
+        }.resume()
+    }
+    
+    func fetchImage(at urlString: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        guard let imageUrl = URL(string: urlString) else {
+            completion(.failure(.otherError))
+            return
+        }
+        
+        var request = URLRequest(url: imageUrl)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(.otherError))
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(.failure(.badData))
+                }
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                DispatchQueue.main.async {
+                    completion(.failure(.decodingError))
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success(image))
             }
         }.resume()
     }

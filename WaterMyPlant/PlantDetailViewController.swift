@@ -33,7 +33,7 @@ class PlantDetailViewController: UIViewController {
     }()
     
     let defaultImageName = "green-leaf-plant-with-white-pot"
-    var imageData: Data?
+    //var imageData: Data?
     
     // MARK: - IBOutlets
     
@@ -59,6 +59,8 @@ class PlantDetailViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
+    // MARK: - Save Button Tapped
+
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let nickName = nameTextField.text else { return }
         
@@ -66,8 +68,8 @@ class PlantDetailViewController: UIViewController {
         let h2oFrequency = h2oFrequencyTextField.text
         let notificationsEnabled = enableNotificationsSwitch.isOn
         let notificationTime = notificationTimeTextField.text
-        let image = plantImageView.image?.pngData()
-        
+        let localImageData = plantImageView.image?.pngData()
+
         var dateLastWatered: Date?
         if let dateLastWateredString = lastWateredTextField.text {
             dateLastWatered = dateFormatter.date(from: dateLastWateredString)
@@ -84,15 +86,33 @@ class PlantDetailViewController: UIViewController {
         
         if let plant = plant {
             // Update existing plant details
-            plantController.updatePlant(plant, with: plantRepresentation)
+            // plantController.updatePlant(plant, with: plantRepresentation)
+            plantController.updatePlant(plant,
+                                        withNickName: nickName,
+                                        species: species,
+                                        h2oFrequency: h2oFrequency,
+                                        image: plant.image,
+                                        localImageData: localImageData,
+                                        notificationsEnabled: notificationsEnabled,
+                                        notificationTime: notificationTime,
+                                        dateLastWatered: dateLastWatered)
         } else {
             // Create a new plant
-            plantController.createPlant(from: plantRepresentation)
+            // plantController.createPlant(from: plantRepresentation)
+            plantController.createPlant(nickName: nickName,
+                                        species: species,
+                                        h2oFrequency: h2oFrequency,
+                                        localImageData: localImageData,
+                                        notificationsEnabled: notificationsEnabled,
+                                        notificationTime: notificationTime,
+                                        dateLastWatered: dateLastWatered)
         }
         
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Date Picker
+
     private func showDateChooserAlert() {
         let dateChooserAlert = UIAlertController(title: "When was this plant last watered?",
                                                  message: "Select Date",
@@ -154,7 +174,8 @@ class PlantDetailViewController: UIViewController {
                 self.nameTextField.text = plant.nickName
                 self.speciesTextField.text = plant.species
                 
-                if let h2oFrequency = plant.h2oFrequency {                    self.h2oFrequencyTextField.text = String(h2oFrequency)
+                if let h2oFrequency = plant.h2oFrequency {
+                    self.h2oFrequencyTextField.text = String(h2oFrequency)
                 }
                 
                 self.enableNotificationsSwitch.isOn = plant.notificationsEnabled
@@ -170,28 +191,55 @@ class PlantDetailViewController: UIViewController {
                 */
                 
                 if let dateLastWatered = plant.dateLastWatered {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "E, MMM d, yyyy"
-                    let dateLastWateredString = formatter.string(from: dateLastWatered)
+                    let dateLastWateredString = self.dateFormatter.string(from: dateLastWatered)
                     self.lastWateredTextField.text = dateLastWateredString
-                    
-                    if let h2oFrequency = plant.h2oFrequency,
-                        let h2oFrequencyInt = Int(h2oFrequency) {
-                       
-                        if let nextWateringDate = Calendar.current.date(byAdding: .day, value: h2oFrequencyInt, to: dateLastWatered) {
-                            
-                            let nextWateringTextFieldString = formatter.string(from: nextWateringDate)
-                            self.nextWateringTextField.text = nextWateringTextFieldString
-                        }
-                    }
                 }
                 
-                if let imageData = self.imageData {
-                    self.plantImageView.image = UIImage(data: imageData)
-                } else {
-                    self.plantImageView.image = UIImage(named: self.defaultImageName)
-                }
+                self.updateNextWateringTextField()
+                self.updateImage()
             }
+        }
+    }
+    
+    private func updateImage() {
+        if let plant = plant {
+            if let imageData = plant.localImageData {
+                // Update image with photo previously chosen from the photo library
+                self.plantImageView.image = UIImage(data: imageData)
+                
+            } else if let imageURL = plant.image {
+                // Update image with pictureURL if one has been set in the database
+                self.updateImage(from: imageURL)
+                
+            } else {
+                // Update image using default plant image
+                self.plantImageView.image = UIImage(named: self.defaultImageName)
+            }
+        }
+    }
+    
+    private func updateImage(from imageURL: String) {
+        self.plantController.fetchImage(at: imageURL) { result in
+            do {
+                self.plantImageView.image = try result.get()
+            } catch {
+                print("Error loading image from URL: \"\(imageURL)\": \(error)")
+                self.plantImageView.image = UIImage(named: self.defaultImageName)
+            }
+        }
+    }
+    
+    private func updateNextWateringTextField() {
+        if let dateLastWateredString = lastWateredTextField.text,
+            let dateLastWatered = dateFormatter.date(from: dateLastWateredString),
+            let h2oFrequency = h2oFrequencyTextField.text,
+            let h2oFrequencyInt = Int(h2oFrequency),
+            let nextWateringDate = Calendar.current.date(byAdding: .day, value: h2oFrequencyInt, to: dateLastWatered) {
+            
+            nextWateringTextField.text = dateFormatter.string(from: nextWateringDate)
+            
+        } else {
+            nextWateringTextField.text = ""
         }
     }
 }

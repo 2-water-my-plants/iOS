@@ -56,6 +56,7 @@ extension Plant {
                      species: String? = nil,
                      h2oFrequency: String? = nil,
                      image: String? = nil,
+                     localImageData: Data? = nil,
                      id: String = UUID().uuidString,
                      notificationsEnabled: Bool = false,
                      notificationTime: String? = nil,
@@ -68,6 +69,7 @@ extension Plant {
         self.species = species
         self.h2oFrequency = h2oFrequency
         self.image = image
+        self.localImageData = localImageData
         self.id = id
         self.notificationsEnabled = notificationsEnabled
         self.notificationTime = notificationTime
@@ -87,7 +89,6 @@ extension Plant {
                   notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
                   notificationTime: plantRepresentation.notificationTime,
                   dateLastWatered: plantRepresentation.dateLastWatered,
-                  prevDateLastWatered: nil,
                   context: context)
     }
 }

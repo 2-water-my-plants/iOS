@@ -4,7 +4,8 @@
         <attribute name="dateLastWatered" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="h2oFrequency" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="localImageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="nickName" optional="YES" attributeType="String"/>
         <attribute name="notificationsEnabled" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="notificationTime" optional="YES" attributeType="String"/>
@@ -12,6 +13,6 @@
         <attribute name="species" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Plant" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Plant" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
