@@ -14,19 +14,23 @@ class UserUpdateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     
     @IBOutlet weak var newPasswordField: UITextField!
     
     @IBAction func passwordTapped(_ sender: Any) {
-    
+        self.navigationController?.popViewController(animated: true)
+        
+        let alert = UIAlertController(title: "Success", message: "Password has been updated!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
         guard let newPassword = newPasswordField.text else {return}
         updateInformation(with: newPassword) { (error) in
-            print("Password has been changed!")
+            
         }
-        
         
     }
     
@@ -58,13 +62,12 @@ class UserUpdateViewController: UIViewController {
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
                 print("Fail")
-                    
+                
                 
             } else {
                 print("Success")
                 
-        }
-            
+            }
             
             
         }.resume()
