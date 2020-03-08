@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 
 protocol SignInViewControllerDelegate: AnyObject {
@@ -17,6 +18,8 @@ protocol SignInViewControllerDelegate: AnyObject {
 
 class SignInViewController: UIViewController {
     
+    // MARK: - Properties
+
     let loginController = LoginController.shared
     
     @IBOutlet private weak var signInUsernameTextField: UITextField!
@@ -25,12 +28,16 @@ class SignInViewController: UIViewController {
     
     @IBOutlet private weak var singInButtonTapped: UIButton!
     
+    // MARK: - View Controller Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.isNavigationBarHidden = true
+        configureViews()
+        configureFullScreenVideo(named: "green-leaves-in-rain", fileType: "mp4")
     }
     
+    // MARK: - Methods
+
     @IBAction func login(_ sender: UIButton) {
         guard let username = self.signInUsernameTextField.text, !username.isEmpty,
             let password = self.signInPasswordTextField.text, !password.isEmpty else { return }
@@ -59,6 +66,8 @@ class SignInViewController: UIViewController {
         }
     }
 
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SignupSegue" {
             guard let vc = segue.destination as? SignUpViewController else { return }
@@ -73,7 +82,53 @@ class SignInViewController: UIViewController {
             plantsTableVC2.user = loginController.user
         }
     }
+    
+    // MARK: - Configure Views
+
+    private func configureViews() {
+        navigationController?.isNavigationBarHidden = true
+        roundedRectView.layer.cornerRadius = 20.0
+        signInButton.layer.cornerRadius = 8.0
+        createAccountButton.layer.cornerRadius = 8.0
+    }
+    
+    private func configureFullScreenVideo(named fileName: String, fileType: String) {
+        roundedRectView.backgroundColor = UIColor(red: 0.9882352941, green: 0.9921568627, blue: 0.9921568627, alpha: 0.86)
+        //videoView.isHidden = true
+        let videoView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
+        view.addSubview(videoView)
+        view.sendSubviewToBack(videoView)
+        
+        let path = URL(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: fileType)!)
+        let player = AVPlayer(url: path)
+        player.isMuted = true
+        
+        let newLayer = AVPlayerLayer(player: player)
+        newLayer.frame = videoView.frame
+        videoView.layer.addSublayer(newLayer)
+        newLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        player.play()
+        player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ViewController.videoDidPlayToEnd(_:)),
+                                               name: NSNotification.Name("AVPlayerItemDidPlayToEndTimeNotification"),
+                                               object: player.currentItem)
+    }
+    
+    @objc func videoDidPlayToEnd(_ notification: Notification) {
+        guard let player: AVPlayerItem = notification.object as? AVPlayerItem else { return }
+        player.seek(to: CMTime.zero, completionHandler: nil)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
 }
+
+// MARK: - Delegate Extensions
 
 extension SignInViewController: SignInViewControllerDelegate {
     func loginAfterSignup(with logingRequest: LoginRequest) {
