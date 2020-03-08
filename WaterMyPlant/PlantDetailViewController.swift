@@ -25,15 +25,12 @@ class PlantDetailViewController: UIViewController {
         dateFormatter.dateFormat = "E, MMM d, yyyy"
         return dateFormatter
     }()
-    
     let timeFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
         return timeFormatter
     }()
-    
     let defaultImageName = "green-leaf-plant-with-white-pot"
-    //var imageData: Data?
     
     // MARK: - IBOutlets
     
@@ -133,6 +130,19 @@ class PlantDetailViewController: UIViewController {
     }
     */
     
+    private func setupViews() {
+        plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0
+    }
+    
+    private func setupDatePicker() {
+        h2oFrequencyTextField.addTarget(self, action: #selector(updateNextWateringTextField), for: .editingChanged)
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        lastWateredTextField.inputView = datePicker
+    }
+    
     @objc func dateChanged(datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
         self.lastWateredTextField.text = dateFormatter.string(from: selectedDate)
@@ -144,15 +154,8 @@ class PlantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0
-        h2oFrequencyTextField.addTarget(self, action: #selector(updateNextWateringTextField), for: .editingChanged)
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.maximumDate = Date()
-        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-        lastWateredTextField.inputView = datePicker
-        
+        setupViews()
+        setupDatePicker()
         updateViews()
         //showDateChooserAlert()
     }

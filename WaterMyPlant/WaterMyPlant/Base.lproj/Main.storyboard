@@ -16,21 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLoginPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="IGd-fa-YXx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="IGd-fa-YXx" secondAttribute="height" multiplier="456:321" id="52b-dW-6pJ"/>
-                                </constraints>
-                            </imageView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-pb-RRg">
-                                <rect key="frame" x="0.0" y="244" width="375" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="594"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="gYc-dI-nOZ"/>
-                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-9N-Psh">
                                 <rect key="frame" x="16" y="264" width="343" height="390"/>
@@ -58,7 +49,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="QL7-jP-VnF"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                                     </textField>
                                                 </subviews>
@@ -77,7 +68,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="vae-nt-BMb"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
@@ -113,19 +104,20 @@
                         <constraints>
                             <constraint firstItem="oEU-9N-Psh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4wN-tw-5ew"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oEU-9N-Psh" secondAttribute="trailing" constant="16" id="8Mw-h4-7Sj"/>
-                            <constraint firstItem="IGd-fa-YXx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9sY-Jw-Qwk"/>
-                            <constraint firstItem="IGd-fa-YXx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BPB-iI-wku"/>
+                            <constraint firstAttribute="bottom" secondItem="Dol-pb-RRg" secondAttribute="bottom" constant="-80" id="GmD-gZ-eiY"/>
                             <constraint firstItem="oEU-9N-Psh" firstAttribute="top" secondItem="Dol-pb-RRg" secondAttribute="top" constant="20" id="LOf-NS-aaH"/>
-                            <constraint firstItem="Dol-pb-RRg" firstAttribute="top" secondItem="IGd-fa-YXx" secondAttribute="bottom" constant="-20" id="P9V-Zo-iFe"/>
                             <constraint firstItem="Dol-pb-RRg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xwq-9B-8Ct"/>
                             <constraint firstItem="Dol-pb-RRg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fAi-mE-KmO"/>
-                            <constraint firstAttribute="trailing" secondItem="IGd-fa-YXx" secondAttribute="trailing" id="xQO-BD-RQd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oEU-9N-Psh" secondAttribute="bottom" constant="70" id="t4C-zx-374"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="KaN-71-zVT"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="createAccountButton" destination="fNf-A1-fnA" id="gNJ-qo-KlI"/>
+                        <outlet property="signInBGSheetView" destination="Dol-pb-RRg" id="7IL-W4-Bbk"/>
+                        <outlet property="signInButton" destination="zQ2-rz-GiE" id="8U2-Q2-Vmc"/>
                         <outlet property="signInPasswordTextField" destination="gcf-BG-HvC" id="MGF-n1-s3J"/>
                         <outlet property="signInUsernameTextField" destination="Kl0-HZ-sRm" id="Qgl-rr-L46"/>
                         <segue destination="x5Q-nk-iII" kind="presentation" identifier="SigninToDetailViewController" modalPresentationStyle="fullScreen" id="3Il-Vn-T60"/>
@@ -779,7 +771,6 @@ Today</string>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="green-leaf-plant-with-white-pot" width="1008" height="1344"/>
         <image name="green-leafed-plants-1650035" width="2832" height="4896"/>
-        <image name="mainLoginPhoto" width="456" height="321"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="square" catalog="system" width="64" height="56"/>
     </resources>
