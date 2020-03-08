@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var signInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,22 @@ class SignUpViewController: UIViewController {
         self.usernameTextField.delegate = self
         self.phoneNumberTextField.delegate = self
         self.passwordTextField.delegate = self
+        configureViews()
+        setupBackupBGImage()
+    }
+    
+    private func configureViews() {
+        signUpButton.layer.cornerRadius = 8.0
+        signInButton.layer.cornerRadius = 8.0
+    }
+    
+    private func setupBackupBGImage() {
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        imageView.contentMode = .scaleAspectFill
+        imageView.alpha = 0.25
+        imageView.image = UIImage(named: "green-leafed-plant-background")
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {

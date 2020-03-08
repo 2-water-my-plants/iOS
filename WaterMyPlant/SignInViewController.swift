@@ -23,7 +23,8 @@ class SignInViewController: UIViewController {
     let cornerRadius: CGFloat = 20.0
     let bgVideoName = "green-leaves-in-rain"
     let bgVideoFileType = "mp4"
-    let backupBGImageName = "green-leafed-plant-background"
+    //let backupBGImageName = "green-leafed-plant-background"
+    let backupBGImageName = "green-leaves-in-rain-image"
     let signInBGSheetColor = UIColor(red: 0.9882352941, green: 0.9921568627, blue: 0.9921568627, alpha: 0.86)
     
     let loginController = LoginController.shared
@@ -33,10 +34,6 @@ class SignInViewController: UIViewController {
     @IBOutlet private weak var signInButton: UIButton!
     @IBOutlet private weak var createAccountButton: UIButton!
     @IBOutlet private weak var signInBGSheetView: UIView!
-    
-    // Can this outlet be deleted? I created a new outlet to this button above.
-    // This one didn't appear to be connected to anything, but I wasn't sure...
-    @IBOutlet private weak var singInButtonTapped: UIButton!
     
     // MARK: - View Controller Lifecycle
 
@@ -103,7 +100,7 @@ class SignInViewController: UIViewController {
     }
     
     private func configureFullScreenVideo(named fileName: String, fileType: String) {
-        signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(0.86)
+        signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(0.83)
         //videoView.isHidden = true
         let videoView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
         view.addSubview(videoView)
@@ -130,6 +127,9 @@ class SignInViewController: UIViewController {
                                                selector: #selector(ViewController.videoDidPlayToEnd(_:)),
                                                name: NSNotification.Name("AVPlayerItemDidPlayToEndTimeNotification"),
                                                object: player.currentItem)
+        
+        // Add background image to sign in screen incase the video doesn't load properly
+        setupBackupBGImage()
     }
     
     @objc func videoDidPlayToEnd(_ notification: Notification) {
@@ -138,12 +138,12 @@ class SignInViewController: UIViewController {
     }
     
     private func setupBackupBGImage() {
-        signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(1.0)
+        //signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(1.0)
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: backupBGImageName)
+        imageView.image = UIImage(named: "photo-of-green-leaf-plant-977890")
     }
     
     override var prefersStatusBarHidden: Bool { true }
