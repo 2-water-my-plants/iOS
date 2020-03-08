@@ -19,6 +19,11 @@ struct LoginRequest: Codable, Equatable {
     let password: String
 }
 
+struct PasswordAndPhoneNumberUpdate: Codable, Equatable {
+    let username: String
+    let password: String
+}
+
 struct GetPlants: Codable, Equatable {
     var id: String?
     var nickname: String?

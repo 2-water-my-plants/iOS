@@ -21,6 +21,8 @@
 		938C37892407933300C274D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C37872407933300C274D6 /* Main.storyboard */; };
 		938C378B2407934F00C274D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938C378A2407934F00C274D6 /* Assets.xcassets */; };
 		938C378E2407934F00C274D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C378C2407934F00C274D6 /* LaunchScreen.storyboard */; };
+		9395CF272414599E001271E9 /* UserUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395CF262414599E001271E9 /* UserUpdateViewController.swift */; };
+		9395CF2924146BF0001271E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395CF2824146BF0001271E9 /* ProfileViewController.swift */; };
 		939DB119240CAB21006BCFD8 /* MyPlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */; };
 		93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B556240A400E008941B2 /* SignUpViewController.swift */; };
 		93B2B559240A425C008941B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B558240A425C008941B2 /* Utilities.swift */; };
@@ -68,6 +70,8 @@
 		938C378A2407934F00C274D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938C378D2407934F00C274D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		938C378F2407934F00C274D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9395CF262414599E001271E9 /* UserUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateViewController.swift; sourceTree = "<group>"; };
+		9395CF2824146BF0001271E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsTableViewController.swift; sourceTree = "<group>"; };
 		93B2B556240A400E008941B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		93B2B558240A425C008941B2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				93BAC82B240B448300B63171 /* SignupNetworking.swift */,
 				93BAC82D240B604400B63171 /* SignInViewController.swift */,
 				939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */,
+				9395CF262414599E001271E9 /* UserUpdateViewController.swift */,
+				9395CF2824146BF0001271E9 /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -372,12 +378,14 @@
 				93BAC824240B2BAE00B63171 /* Token.swift in Sources */,
 				938C37862407933300C274D6 /* ViewController.swift in Sources */,
 				63F3558A240D9B830025A42C /* WaterMyPlant.xcdatamodeld in Sources */,
+				9395CF272414599E001271E9 /* UserUpdateViewController.swift in Sources */,
 				938C37822407933300C274D6 /* AppDelegate.swift in Sources */,
 				93B2B566240A49DF008941B2 /* DJButton.swift in Sources */,
 				93B2B562240A4797008941B2 /* DJErrorMessage.swift in Sources */,
 				93B2B55B240A44CB008941B2 /* UIViewController+Ext.swift in Sources */,
 				93BAC826240B2BF900B63171 /* Request.swift in Sources */,
 				93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */,
+				9395CF2924146BF0001271E9 /* ProfileViewController.swift in Sources */,
 				93BAC82E240B604400B63171 /* SignInViewController.swift in Sources */,
 				93BAC82A240B442D00B63171 /* APIModel.swift in Sources */,
 				93B2B55E240A464A008941B2 /* DJAlertVC.swift in Sources */,

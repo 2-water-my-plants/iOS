@@ -14,6 +14,7 @@ class MyPlantsTableViewController: UITableViewController {
     // MARK: - Properties
 
     let plantController = PlantController()
+    var user: User?
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
@@ -107,9 +108,10 @@ class MyPlantsTableViewController: UITableViewController {
             guard let detailVC = segue.destination as? PlantDetailViewController else { return }
             detailVC.plantController = plantController
             
-        //case "ModalUserProfileSegue":
-            //guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
-            
+        case "ProfileSegue":
+            guard let profileVC = segue.destination as? ProfileViewController else {
+                return }
+            profileVC.user = user
         default:
             break
         }
@@ -203,4 +205,6 @@ extension MyPlantsTableViewController: NSFetchedResultsControllerDelegate {
             break
         }
     }
+    
+    
 }

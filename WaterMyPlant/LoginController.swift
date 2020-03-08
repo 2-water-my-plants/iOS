@@ -11,12 +11,20 @@ import Foundation
 
 class LoginController {
     
+    struct LoginResponse: Codable {
+        
+        var message: String
+        var token: String
+        var user: User
+    }
+    
     static var shared = LoginController()
     
     typealias CompletionHandler = (Error?) -> Void
     
     private let baseURL = URL(string: "https://webpt9-water-my-plants.herokuapp.com/api")!
     var token: Token?
+    var user: User?
     
     func login(with loginData: LoginRequest, completion: @escaping CompletionHandler = { _ in}) {
         let requestURL = baseURL.appendingPathComponent("/auth/login")
@@ -47,8 +55,10 @@ class LoginController {
             let decoder = JSONDecoder()
             
             do {
-                let user = try decoder.decode(User.self, from: data)
-                self.token = Token(id: user.id, token: user.token ?? "")
+                let loginResponse = try decoder.decode(LoginResponse.self, from: data)
+                let user = loginResponse.user
+                self.token = Token(id: user.id, token: loginResponse.token ?? "")
+                self.user = user
             } catch {
                 print("Error decoding Token:  \(error)")
                 completion(error)

@@ -344,7 +344,7 @@ Today</string>
                     <navigationItem key="navigationItem" title="My Plants" id="8ld-Wi-UJO">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="hgz-qc-30K">
                             <connections>
-                                <segue destination="3jo-cF-Epa" kind="show" id="MYm-hY-pJK"/>
+                                <segue destination="3jo-cF-Epa" kind="show" identifier="ProfileSegue" id="MYm-hY-pJK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0X8-rX-L4C">
@@ -608,7 +608,7 @@ Today</string>
         <!--Profile-->
         <scene sceneID="Mem-oB-IRa">
             <objects>
-                <viewController id="3jo-cF-Epa" sceneMemberID="viewController">
+                <viewController id="3jo-cF-Epa" customClass="ProfileViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hax-ta-KGj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -623,7 +623,7 @@ Today</string>
                                 <color key="backgroundColor" red="0.89358185518393818" green="1" blue="0.8627142860322492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Change Password"/>
                                 <connections>
-                                    <segue destination="Z0n-Dc-MJw" kind="show" id="zVe-6O-8IN"/>
+                                    <segue destination="Z0n-Dc-MJw" kind="show" identifier="ProfileToChangePassword" id="zVe-6O-8IN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34b-ma-YGa">
@@ -708,7 +708,7 @@ Today</string>
         <!--Password Change-->
         <scene sceneID="uZS-bi-00X">
             <objects>
-                <viewController id="Z0n-Dc-MJw" sceneMemberID="viewController">
+                <viewController id="Z0n-Dc-MJw" customClass="UserUpdateViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6D-TH-nBm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -740,6 +740,9 @@ Today</string>
                                 <state key="normal" title="Save New Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="passwordTapped:" destination="Z0n-Dc-MJw" eventType="touchUpInside" id="hpO-qc-5at"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp8-eH-etM">
                                 <rect key="frame" x="90" y="363" width="194" height="30"/>
@@ -757,6 +760,9 @@ Today</string>
                         <viewLayoutGuide key="safeArea" id="5rv-ot-NUj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Password Change" id="SWh-lq-2cT"/>
+                    <connections>
+                        <outlet property="newPasswordField" destination="Z5C-b4-vsa" id="FaE-Ed-NkH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wjp-1K-EMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,8 +778,9 @@ Today</string>
         <image name="square" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="zVe-6O-8IN"/>
         <segue reference="LMT-Wg-GUO"/>
-        <segue reference="ZCT-80-ZWv"/>
+        <segue reference="zfU-Uy-B98"/>
         <segue reference="3Vg-GW-elZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
