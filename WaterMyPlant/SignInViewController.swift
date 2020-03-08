@@ -20,12 +20,22 @@ class SignInViewController: UIViewController {
     
     // MARK: - Properties
 
+    let cornerRadius: CGFloat = 20.0
+    let bgVideoName = "green-leaves-in-rain"
+    let bgVideoFileType = "mp4"
+    let backupBGImageName = "green-leafed-plant-background"
+    let signInBGSheetColor = UIColor(red: 0.9882352941, green: 0.9921568627, blue: 0.9921568627, alpha: 0.86)
+    
     let loginController = LoginController.shared
     
     @IBOutlet private weak var signInUsernameTextField: UITextField!
-    
     @IBOutlet private weak var signInPasswordTextField: UITextField!
+    @IBOutlet private weak var signInButton: UIButton!
+    @IBOutlet private weak var createAccountButton: UIButton!
+    @IBOutlet private weak var signInBGSheetView: UIView!
     
+    // Can this outlet be deleted? I created a new outlet to this button above.
+    // This one didn't appear to be connected to anything, but I wasn't sure...
     @IBOutlet private weak var singInButtonTapped: UIButton!
     
     // MARK: - View Controller Lifecycle
@@ -33,7 +43,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
-        configureFullScreenVideo(named: "green-leaves-in-rain", fileType: "mp4")
+        configureFullScreenVideo(named: bgVideoName, fileType: bgVideoFileType)
     }
     
     // MARK: - Methods
@@ -87,20 +97,25 @@ class SignInViewController: UIViewController {
 
     private func configureViews() {
         navigationController?.isNavigationBarHidden = true
-        roundedRectView.layer.cornerRadius = 20.0
+        signInBGSheetView.layer.cornerRadius = 20.0
         signInButton.layer.cornerRadius = 8.0
         createAccountButton.layer.cornerRadius = 8.0
     }
     
     private func configureFullScreenVideo(named fileName: String, fileType: String) {
-        roundedRectView.backgroundColor = UIColor(red: 0.9882352941, green: 0.9921568627, blue: 0.9921568627, alpha: 0.86)
+        signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(0.86)
         //videoView.isHidden = true
         let videoView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
         view.addSubview(videoView)
         view.sendSubviewToBack(videoView)
         
-        let path = URL(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: fileType)!)
-        let player = AVPlayer(url: path)
+        guard let path = Bundle.main.path(forResource: fileName, ofType: fileType) else {
+            print("Error: could not find \(fileName).\(fileType) in Bundle.main.")
+            setupBackupBGImage()
+            return
+        }
+        
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
         player.isMuted = true
         
         let newLayer = AVPlayerLayer(player: player)
@@ -122,9 +137,16 @@ class SignInViewController: UIViewController {
         player.seek(to: CMTime.zero, completionHandler: nil)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    private func setupBackupBGImage() {
+        signInBGSheetView.backgroundColor = signInBGSheetColor.withAlphaComponent(1.0)
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: backupBGImageName)
     }
+    
+    override var prefersStatusBarHidden: Bool { true }
     
 }
 

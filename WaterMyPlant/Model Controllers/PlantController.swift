@@ -21,8 +21,8 @@ class PlantController {
     }
     
     // MARK: - CRUD: Public
-    // CREATE, UPDATE, and DELETE functionality implemented
-    // for Plant model object persistence using Core Data
+    // CREATE, UPDATE, and DELETE functionality for Plant model object persistence
+    // using Core Data.
     
     // MARK: - CREATE
     
