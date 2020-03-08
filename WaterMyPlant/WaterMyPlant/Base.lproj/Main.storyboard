@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLoginPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="IGd-fa-YXx">
@@ -250,7 +250,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="PlantsSelectorVC" id="U1N-Nb-cBm" customClass="MyPlantsTableViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="meD-2Z-Isk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -371,11 +371,11 @@ Today</string>
             <objects>
                 <viewController id="GT5-Gu-bHE" customClass="PlantDetailViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwU-Lb-uE9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-3h-JGg">
-                                <rect key="frame" x="20" y="375" width="335" height="304"/>
+                                <rect key="frame" x="20" y="235" width="335" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-L2-8fa">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="202"/>
@@ -390,7 +390,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a plant name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jry-tU-MAd">
-                                                        <rect key="frame" x="59" y="6.6666666666666856" width="143" height="21"/>
+                                                        <rect key="frame" x="59" y="6.6666666666666572" width="143" height="21"/>
                                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -467,7 +467,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fk1-7a-avi">
-                                                        <rect key="frame" x="165" y="6.6666666666666288" width="5" height="21"/>
+                                                        <rect key="frame" x="165" y="6.6666666666666856" width="5" height="21"/>
                                                         <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -511,7 +511,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xmr-ce-iTP">
-                                                        <rect key="frame" x="146.33333333333337" y="6.6666666666666288" width="188.66666666666663" height="21"/>
+                                                        <rect key="frame" x="146.33333333333337" y="6.6666666666666856" width="188.66666666666663" height="21"/>
                                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -526,13 +526,13 @@ Today</string>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="green-leaf-plant-with-white-pot" translatesAutoresizingMaskIntoConstraints="NO" id="b72-9o-Hgm">
-                                <rect key="frame" x="80" y="140" width="215" height="215"/>
+                                <rect key="frame" x="80" y="0.0" width="215" height="215"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b72-9o-Hgm" secondAttribute="height" multiplier="1:1" id="w2c-fE-bEl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKl-wF-WP0">
-                                <rect key="frame" x="232" y="305.33333333333331" width="63" height="49.666666666666686"/>
+                                <rect key="frame" x="232" y="165.33333333333334" width="63" height="49.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
@@ -610,7 +610,7 @@ Today</string>
             <objects>
                 <viewController id="3jo-cF-Epa" customClass="ProfileViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hax-ta-KGj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-J9-uGi">
@@ -632,7 +632,7 @@ Today</string>
                                 <color key="backgroundColor" red="0.89358185518393818" green="1" blue="0.8627142860322492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Change Phone Number"/>
                                 <connections>
-                                    <segue destination="f9W-Z4-adc" kind="show" id="oWH-sP-LKJ"/>
+                                    <segue destination="f9W-Z4-adc" kind="show" identifier="ProfileToPhoneNumberChange" id="oWH-sP-LKJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -654,9 +654,9 @@ Today</string>
         <!--Phone Number Change-->
         <scene sceneID="2fb-Nj-ieD">
             <objects>
-                <viewController title="Phone Number Change" id="f9W-Z4-adc" sceneMemberID="viewController">
+                <viewController title="Phone Number Change" id="f9W-Z4-adc" customClass="PhoneNumberUpdateViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H8H-CU-hlR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="45k-Pu-8p4">
@@ -683,6 +683,9 @@ Today</string>
                                 <state key="normal" title="Save New Phone Number">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="phoneNumberTapped:" destination="f9W-Z4-adc" eventType="touchUpInside" id="YKd-Dg-LN4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP8-CU-FLx">
                                 <rect key="frame" x="90" y="363" width="194" height="30"/>
@@ -700,6 +703,9 @@ Today</string>
                         <viewLayoutGuide key="safeArea" id="1cc-XH-w8e"/>
                     </view>
                     <navigationItem key="navigationItem" title="P. Number Change" id="Ez7-23-gmt"/>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="5yW-Iw-DFb" id="zRJ-Mo-BdS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-Zl-5Bd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -710,7 +716,7 @@ Today</string>
             <objects>
                 <viewController id="Z0n-Dc-MJw" customClass="UserUpdateViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6D-TH-nBm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="nfG-ff-Bjv">
@@ -778,8 +784,9 @@ Today</string>
         <image name="square" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="oWH-sP-LKJ"/>
         <segue reference="LMT-Wg-GUO"/>
-        <segue reference="4O2-X6-ecm"/>
+        <segue reference="ZCT-80-ZWv"/>
         <segue reference="3Vg-GW-elZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

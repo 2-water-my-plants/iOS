@@ -23,6 +23,7 @@
 		938C378E2407934F00C274D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938C378C2407934F00C274D6 /* LaunchScreen.storyboard */; };
 		9395CF272414599E001271E9 /* UserUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395CF262414599E001271E9 /* UserUpdateViewController.swift */; };
 		9395CF2924146BF0001271E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395CF2824146BF0001271E9 /* ProfileViewController.swift */; };
+		9395CF2B2414BAD4001271E9 /* PhoneNumberUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395CF2A2414BAD4001271E9 /* PhoneNumberUpdateViewController.swift */; };
 		939DB119240CAB21006BCFD8 /* MyPlantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */; };
 		93B2B557240A400E008941B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B556240A400E008941B2 /* SignUpViewController.swift */; };
 		93B2B559240A425C008941B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2B558240A425C008941B2 /* Utilities.swift */; };
@@ -72,6 +73,7 @@
 		938C378F2407934F00C274D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9395CF262414599E001271E9 /* UserUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateViewController.swift; sourceTree = "<group>"; };
 		9395CF2824146BF0001271E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9395CF2A2414BAD4001271E9 /* PhoneNumberUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberUpdateViewController.swift; sourceTree = "<group>"; };
 		939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsTableViewController.swift; sourceTree = "<group>"; };
 		93B2B556240A400E008941B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		93B2B558240A425C008941B2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				939DB118240CAB21006BCFD8 /* MyPlantsTableViewController.swift */,
 				9395CF262414599E001271E9 /* UserUpdateViewController.swift */,
 				9395CF2824146BF0001271E9 /* ProfileViewController.swift */,
+				9395CF2A2414BAD4001271E9 /* PhoneNumberUpdateViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				63F355A2240ED2670025A42C /* MyPlantsTableViewCell.swift in Sources */,
 				93BAC822240B2B1700B63171 /* User.swift in Sources */,
 				63F3558E240D9B920025A42C /* CoreDataStack.swift in Sources */,
+				9395CF2B2414BAD4001271E9 /* PhoneNumberUpdateViewController.swift in Sources */,
 				93BAC824240B2BAE00B63171 /* Token.swift in Sources */,
 				938C37862407933300C274D6 /* ViewController.swift in Sources */,
 				63F3558A240D9B830025A42C /* WaterMyPlant.xcdatamodeld in Sources */,

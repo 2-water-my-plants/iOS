@@ -1,5 +1,5 @@
 //
-//  UserUpdateViewController.swift
+//  PhoneNumberUpdateViewController.swift
 //  WaterMyPlant
 //
 //  Created by Lambda_School_Loaner_201 on 3/7/20.
@@ -8,34 +8,34 @@
 
 import UIKit
 
-class UserUpdateViewController: UIViewController {
+class PhoneNumberUpdateViewController: UIViewController {
     
     var user: User?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Do any additional setup after loading the view.
     }
     
     
-    @IBOutlet private weak var newPasswordField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    @IBAction func passwordTapped(_ sender: Any) {
+    @IBAction func phoneNumberTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         
-        let alert = UIAlertController(title: "Success", message: "Password has been updated!", preferredStyle: .alert)
+        
+        
+        guard let newNumber = phoneNumberTextField.text else { return }
+        updateNumber(with: newNumber) { (error) in
+    
+        }
+        let alert = UIAlertController(title: "Success", message: "Phone number has been updated!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
-        guard let newPassword = newPasswordField.text else { return }
-        updateInformation(with: newPassword) { error in
-            
-        }
-        
     }
     
-    func updateInformation(with password: String, completion: @escaping (Error?) -> Void) {
-        
+    func updateNumber(with phoneNumber: String, completion: @escaping (Error?) -> Void) {
         let baseURL = URL(string: "https://webpt9-water-my-plants.herokuapp.com/api")!
         
         guard let user = user, let id = user.id, let token = LoginController.shared.token?.token else { return }
@@ -48,7 +48,7 @@ class UserUpdateViewController: UIViewController {
         
         let json = """
         {
-        "password": "\(password)"
+        "phoneNumber": "\(phoneNumber)"
         }
         """
         let jsonData = json.data(using: .utf8)
@@ -68,12 +68,8 @@ class UserUpdateViewController: UIViewController {
                 print("Success")
                 
             }
-            
-            
         }.resume()
     }
-}
-    
     /*
     // MARK: - Navigation
 
@@ -83,3 +79,5 @@ class UserUpdateViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}

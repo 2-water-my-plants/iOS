@@ -64,9 +64,13 @@ class SignInViewController: UIViewController {
             guard let vc = segue.destination as? SignUpViewController else { return }
             vc.delegate = self
         } else if segue.identifier == "SigninToDetailViewController" {
-            guard let navController = segue.destination as? UINavigationController, let plantsTableVC = navController.topViewController as? MyPlantsTableViewController else { return }
-            
+            guard let navController = segue.destination as? UINavigationController,
+                let plantsTableVC = navController.topViewController as? MyPlantsTableViewController else { return }
             plantsTableVC.user = loginController.user
+        } else if segue.identifier == "SigninToDetailViewController" {
+            guard let navController2 = segue.destination as? UINavigationController,
+            let plantsTableVC2 = navController2.topViewController as? MyPlantsTableViewController else { return }
+            plantsTableVC2.user = loginController.user
         }
     }
 }

@@ -28,6 +28,11 @@ class ProfileViewController: UIViewController {
             guard let changePasswordVC = segue.destination as? UserUpdateViewController else { return }
             
             changePasswordVC.user = user
+            
+        } else if segue.identifier == "ProfileToPhoneNumberChange" {
+            guard let changePhoneNumberVC = segue.destination as? PhoneNumberUpdateViewController else { return }
+            
+            changePhoneNumberVC.user = user
         }
     }
 }
