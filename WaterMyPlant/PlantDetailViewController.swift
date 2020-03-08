@@ -37,14 +37,14 @@ class PlantDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var speciesTextField: UITextField!
-    @IBOutlet weak var h2oFrequencyTextField: UITextField!
-    @IBOutlet weak var lastWateredTextField: UITextField!
-    @IBOutlet weak var nextWateringTextField: UITextField!
-    @IBOutlet weak var enableNotificationsSwitch: UISwitch!
-    @IBOutlet weak var notificationTimeTextField: UITextField!
-    @IBOutlet weak var plantImageView: UIImageView!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var speciesTextField: UITextField!
+    @IBOutlet private weak var h2oFrequencyTextField: UITextField!
+    @IBOutlet private weak var lastWateredTextField: UITextField!
+    @IBOutlet private weak var nextWateringTextField: UITextField!
+    @IBOutlet private weak var enableNotificationsSwitch: UISwitch!
+    @IBOutlet private weak var notificationTimeTextField: UITextField!
+    @IBOutlet private weak var plantImageView: UIImageView!
     
     // MARK: - IBActions
     
@@ -75,18 +75,8 @@ class PlantDetailViewController: UIViewController {
             dateLastWatered = dateFormatter.date(from: dateLastWateredString)
         }
         
-        let plantRepresentation = PlantRepresentation(nickName: nickName,
-                                                      species: species,
-                                                      h2oFrequency: h2oFrequency,
-                                                      image: defaultImageName,
-                                                      id: nil,
-                                                      notificationsEnabled: notificationsEnabled,
-                                                      notificationTime: notificationTime,
-                                                      dateLastWatered: dateLastWatered)
-        
         if let plant = plant {
             // Update existing plant details
-            // plantController.updatePlant(plant, with: plantRepresentation)
             plantController.updatePlant(plant,
                                         withNickName: nickName,
                                         species: species,
@@ -98,7 +88,6 @@ class PlantDetailViewController: UIViewController {
                                         dateLastWatered: dateLastWatered)
         } else {
             // Create a new plant
-            // plantController.createPlant(from: plantRepresentation)
             plantController.createPlant(nickName: nickName,
                                         species: species,
                                         h2oFrequency: h2oFrequency,
@@ -113,6 +102,11 @@ class PlantDetailViewController: UIViewController {
     
     // MARK: - Date Picker
 
+    // This code commented out below is a second option for displaying the datepicker.
+    // I think it will look nicer than what we have now, but but there are still a few bugs
+    // that need to be fixed in the code. I'll come back to this later if there is time.
+    
+    /*
     private func showDateChooserAlert() {
         let dateChooserAlert = UIAlertController(title: "When was this plant last watered?",
                                                  message: "Select Date",
@@ -137,11 +131,13 @@ class PlantDetailViewController: UIViewController {
         
         self.present(dateChooserAlert, animated: true, completion: nil)
     }
+    */
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
         self.lastWateredTextField.text = dateFormatter.string(from: selectedDate)
         view.endEditing(true)
+        updateNextWateringTextField()
     }
     
     // MARK: - Lifecycle
@@ -150,7 +146,7 @@ class PlantDetailViewController: UIViewController {
         super.viewDidLoad()
         
         plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0
-        
+        h2oFrequencyTextField.addTarget(self, action: #selector(updateNextWateringTextField), for: .editingChanged)
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
@@ -229,7 +225,7 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
-    private func updateNextWateringTextField() {
+    @objc private func updateNextWateringTextField() {
         if let dateLastWateredString = lastWateredTextField.text,
             let dateLastWatered = dateFormatter.date(from: dateLastWateredString),
             let h2oFrequency = h2oFrequencyTextField.text,
@@ -245,7 +241,7 @@ class PlantDetailViewController: UIViewController {
 }
 
 extension PlantDetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.originalImage] as? UIImage {
             plantImageView.image = image
         }

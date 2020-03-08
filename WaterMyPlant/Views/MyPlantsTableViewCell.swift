@@ -52,6 +52,12 @@ class MyPlantsTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let plant = plant else { return }
         
+        plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0
+        if let imageData = plant.localImageData,
+            let image = UIImage(data: imageData) {
+            plantImageView.image = image
+        }
+        
         nameLabel.text = plant.nickName
         speciesLabel.text = plant.species
         
