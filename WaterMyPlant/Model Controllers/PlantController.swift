@@ -22,17 +22,6 @@ class PlantController {
         fetchPlantsFromServer()
     }
     
-    // MARK: - Helper Methods
-
-    func date(from notificationTimeRepresentation: String?) -> Date? {
-        if let notificationTimeString = notificationTimeRepresentation {
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "HH:mm:ss"
-            return timeFormatter.date(from: notificationTimeString)
-        }
-        return nil
-    }
-    
     // MARK: - CRUD: Public
     // CREATE, UPDATE, and DELETE functionality for Plant model object persistence
     // using Core Data.
@@ -169,22 +158,35 @@ class PlantController {
     }
 }
 
-// MARK: - Server Sync
+// MARK: - Helper Methods
+
+func date(from notificationTimeRepresentation: String?) -> Date? {
+    if let notificationTimeString = notificationTimeRepresentation {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm:ss"
+        return timeFormatter.date(from: notificationTimeString)
+    }
+    return nil
+}
+
+// MARK: - Networking
 
 extension PlantController {
     
     // MARK: - Server API: Public
     
     func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        guard let userId = userId else { return }
+        
         let requestURL = baseURL
-            .appendingPathComponent("auth/myplants")
+            .appendingPathComponent("auth/users/\(userId)/plants")
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
-        URLSession.shared.dataTask(with: requestURL) { data, _, error in
+        URLSession.shared.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
                 print("Error fetching plants from server: \(error!)")
                 DispatchQueue.main.async {
@@ -201,18 +203,24 @@ extension PlantController {
                 return
             }
             
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 200 {
+                print("Status Code: 200 OK; Successful GET!")
+            }
+            
             let jsonDecoder = JSONDecoder()
             jsonDecoder.dateDecodingStrategy = .secondsSince1970
             
             do {
-                let plantRepresentations = Array(try jsonDecoder.decode([String: PlantRepresentation].self, from: data).values)
+                //let plantRepresentations = Array(try jsonDecoder.decode([String: PlantRepresentation].self, from: data).values)
+                let plantRepresentations = try jsonDecoder.decode([PlantRepresentation].self, from: data)
                 
                 try self.updatePlants(with: plantRepresentations)
                 DispatchQueue.main.async {
                     completion(nil)
                 }
             } catch {
-                print("Error decoding plant representations: \(error)")
+                print("Error decoding and updating plant representations from the server: \(error)")
                 DispatchQueue.main.async {
                     completion(.decodingError)
                 }
@@ -307,6 +315,11 @@ extension PlantController {
                 return
             }
             
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 201 {
+                print("Status Code: 201 Created; Successful POST!")
+            }
+            
             DispatchQueue.main.async {
                 completion(nil)
             }
@@ -319,14 +332,14 @@ extension PlantController {
 //            return
 //        }
         
-        guard let id = plant.id else {
+        guard let plantId = plant.id else {
             completion(.otherError)
             return
         }
         
         let requestURL = baseURL
-            .appendingPathComponent("auth/myplants")
-            .appendingPathComponent(id)
+            .appendingPathComponent("plants")
+            .appendingPathComponent(plantId)
             .appendingPathExtension("json")
         
         var request = URLRequest(url: requestURL)
@@ -334,13 +347,18 @@ extension PlantController {
 //        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = HTTPMethod.delete.rawValue
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             guard error == nil else {
                 print("Error deleting plant (id: \"\(plant.id ?? "")\") from server: \(error!)")
                 DispatchQueue.main.async {
                     completion(.otherError)
                 }
                 return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 200 {
+                print("Status Code: 200 OK; Successful DELETE!")
             }
             
             DispatchQueue.main.async {

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 class PlantDetailViewController: UIViewController {
-
+    
     // MARK: - Properties
 
     var plantController: PlantController!
@@ -87,18 +88,59 @@ class PlantDetailViewController: UIViewController {
                                         notificationEnabled: notificationEnabled,
                                         notificationTime: notificationTime,
                                         dateLastWatered: dateLastWatered)
+            
+            scheduleWaterNotification(for: plant)
+            
         } else {
             // Create a new plant
-            plantController.createPlant(nickName: nickName,
+            let plant = plantController.createPlant(nickName: nickName,
                                         species: species,
                                         h2oFrequency: h2oFrequency,
                                         localImageData: localImageData,
                                         notificationEnabled: notificationEnabled,
                                         notificationTime: notificationTime,
                                         dateLastWatered: dateLastWatered)
+            
+            scheduleWaterNotification(for: plant)
         }
         
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func scheduleWaterNotification(for plant: Plant) {
+        // Determine whether a notification should be scheduled
+        guard plant.notificationEnabled == true,
+            let daysTillNextWater = plant.daysTillNextWater,
+            let notificationTimeInSeconds = plant.notificationTimeInSeconds else { return }
+        
+        let secondsTillNotification = (daysTillNextWater * 86400) + notificationTimeInSeconds - currentTimeInSeconds()
+        guard secondsTillNotification > 0 else { return }
+        
+        // Schedule notification
+        let notificationCenter = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        let plantName = plant.nickName ?? "plant"
+        content.title = "Reminder"
+        content.body = "It's time to water your \(plantName)!"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(secondsTillNotification), repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "Reminder", content: content, trigger: trigger)
+        
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                print("Error = \(error?.localizedDescription ?? "error local notification")")
+            } else {
+                print("Notification scheduled for \(secondsTillNotification) seconds from now.")
+            }
+        }
+    }
+    
+    private func currentTimeInSeconds() -> Int {
+        let currentDate = Date()
+        let beginningOfDay = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: currentDate)!
+        return Int(currentDate.timeIntervalSince(beginningOfDay))
     }
     
     // MARK: - View Controller Lifecycle
@@ -156,12 +198,20 @@ class PlantDetailViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
         datePicker.addTarget(self, action: #selector(lastWateredDateChanged), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        
         lastWateredTextField.inputView = datePicker
     }
     
     @objc func lastWateredDateChanged(datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
         self.lastWateredTextField.text = dateFormatter.string(from: selectedDate)
+        updateNextWateringTextField()
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
         updateNextWateringTextField()
     }
@@ -171,13 +221,16 @@ class PlantDetailViewController: UIViewController {
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
         timePicker.addTarget(self, action: #selector(notificationTimeChanged), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        
         notificationTimeTextField.inputView = timePicker
     }
     
     @objc func notificationTimeChanged(timePicker: UIDatePicker) {
         let selectedTime = timePicker.date
         self.notificationTimeTextField.text = timeFormatter.string(from: selectedTime)
-        view.endEditing(true)
     }
 
     // MARK: - Update Views

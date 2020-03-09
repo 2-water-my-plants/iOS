@@ -59,14 +59,16 @@ class MyPlantsTableViewCell: UITableViewCell {
         }
         
         nameLabel.text = plant.nickName
-        speciesLabel.text = plant.species
+        speciesLabel.text = "Species: \(plant.species ?? "not specified")"
         
         guard let daysSinceLastWatered = plant.daysSinceLastWatered else { return }
                 
         // Update isWateredCheckBox
         if daysSinceLastWatered == 0 {
+            isWateredCheckBox.tintColor = #colorLiteral(red: 0.009934567846, green: 0.56351161, blue: 0.3181376457, alpha: 1)
             isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
         } else {
+            isWateredCheckBox.tintColor = #colorLiteral(red: 0.3215686275, green: 0.3411764706, blue: 0.3803921569, alpha: 1)
             isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
         }
         
@@ -83,15 +85,20 @@ class MyPlantsTableViewCell: UITableViewCell {
     func generatedWaterCountdownString(daysTillNextWater: Int) -> String {
         switch daysTillNextWater {
         case 0:
+            waterCountdownLabel.textColor = #colorLiteral(red: 0.009934567846, green: 0.56351161, blue: 0.3181376457, alpha: 1)
             return "Water today"
         case 1:
+            waterCountdownLabel.textColor = #colorLiteral(red: 0.3215686275, green: 0.3411764706, blue: 0.3803921569, alpha: 1)
             return "Water tomorrow"
         case -1:
-            return "Water overdue by \(-daysTillNextWater) day"
+            waterCountdownLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            return "Water overdue by 1 day"
         default:
             if daysTillNextWater > 1 {
+                waterCountdownLabel.textColor = #colorLiteral(red: 0.3215686275, green: 0.3411764706, blue: 0.3803921569, alpha: 1)
                 return "Water in \(daysTillNextWater) days"
             } else {
+                waterCountdownLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                 return "Water overdue by \(-daysTillNextWater) days"
             }
         }

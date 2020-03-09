@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension Plant {
     
@@ -63,6 +64,12 @@ extension Plant {
         let timeFormatter = DateFormatter()
         timeFormatter.timeStyle = .short
         return timeFormatter.string(from: notificationTime)
+    }
+    
+    var notificationTimeInSeconds: Int? {
+        guard let notificationTime = notificationTime,
+            let beginningOfDay = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: notificationTime) else { return nil }
+        return Int(notificationTime.timeIntervalSince(beginningOfDay))
     }
     
     // MARK: - Initializers
