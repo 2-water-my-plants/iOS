@@ -14,7 +14,8 @@ struct PlantRepresentation: Codable {
     let h2oFrequency: String?
     let image: String?
     let id: String?
-    let notificationsEnabled: Bool?
+    let notificationEnabled: Bool?
     let notificationTime: String?
     let dateLastWatered: Date?
+    let userId: String?
 }

@@ -16,8 +16,21 @@ class PlantController {
     
     typealias CompletionHandler = (NetworkError?) -> Void
     
+    var userId: String?
+    
     init() {
         fetchPlantsFromServer()
+    }
+    
+    // MARK: - Helper Methods
+
+    func date(from notificationTimeRepresentation: String?) -> Date? {
+        if let notificationTimeString = notificationTimeRepresentation {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm:ss"
+            return timeFormatter.date(from: notificationTimeString)
+        }
+        return nil
     }
     
     // MARK: - CRUD: Public
@@ -31,8 +44,8 @@ class PlantController {
                                         h2oFrequency: String? = nil,
                                         image: String? = nil,
                                         localImageData: Data? = nil,
-                                        notificationsEnabled: Bool = false,
-                                        notificationTime: String? = nil,
+                                        notificationEnabled: Bool = false,
+                                        notificationTime: Date? = nil,
                                         dateLastWatered: Date? = nil) -> Plant {
         
         let plant = Plant(nickName: nickName,
@@ -40,9 +53,10 @@ class PlantController {
                           h2oFrequency: h2oFrequency,
                           image: image,
                           localImageData: localImageData,
-                          notificationsEnabled: notificationsEnabled,
+                          notificationEnabled: notificationEnabled,
                           notificationTime: notificationTime,
-                          dateLastWatered: dateLastWatered)
+                          dateLastWatered: dateLastWatered,
+                          userId: userId)
         
         do {
             try CoreDataStack.shared.save()
@@ -55,12 +69,13 @@ class PlantController {
     }
     
     @discardableResult func createPlant(from plantRepresentation: PlantRepresentation) -> Plant {
+        let notificationTime = date(from: plantRepresentation.notificationTime)
         let plant = createPlant(nickName: plantRepresentation.nickName,
                                 species: plantRepresentation.species,
                                 h2oFrequency: plantRepresentation.h2oFrequency,
                                 image: plantRepresentation.image,
-                                notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
-                                notificationTime: plantRepresentation.notificationTime,
+                                notificationEnabled: plantRepresentation.notificationEnabled ?? false,
+                                notificationTime: notificationTime,
                                 dateLastWatered: plantRepresentation.dateLastWatered)
         return plant
     }
@@ -73,8 +88,8 @@ class PlantController {
                      h2oFrequency: String?,
                      image: String?,
                      localImageData: Data?,
-                     notificationsEnabled: Bool,
-                     notificationTime: String?,
+                     notificationEnabled: Bool,
+                     notificationTime: Date?,
                      dateLastWatered: Date?) {
 
         plant.nickName = nickName
@@ -82,7 +97,7 @@ class PlantController {
         plant.h2oFrequency = h2oFrequency
         plant.image = image
         plant.localImageData = localImageData
-        plant.notificationsEnabled = notificationsEnabled
+        plant.notificationEnabled = notificationEnabled
         plant.notificationTime = notificationTime
         plant.dateLastWatered = dateLastWatered
 
@@ -95,14 +110,15 @@ class PlantController {
     }
   // swiftlint:enable all
     func updatePlant(_ plant: Plant, with plantRepresentation: PlantRepresentation) {
+        let notificationTime = date(from: plantRepresentation.notificationTime)
         updatePlant(plant,
                     withNickName: plantRepresentation.nickName,
                     species: plantRepresentation.species,
                     h2oFrequency: plantRepresentation.h2oFrequency,
                     image: plantRepresentation.image,
                     localImageData: plant.localImageData,
-                    notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
-                    notificationTime: plantRepresentation.notificationTime,
+                    notificationEnabled: plantRepresentation.notificationEnabled ?? false,
+                    notificationTime: notificationTime,
                     dateLastWatered: plantRepresentation.dateLastWatered)
     }
     
@@ -244,10 +260,10 @@ extension PlantController {
     // MARK: - Server API: Private
     
     private func postPlantToServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
-        guard let token = LoginController.shared.token else {
-            completion(.noAuth)
-            return
-        }
+//        guard let token = LoginController.shared.token else {
+//            completion(.noAuth)
+//            return
+//        }
         
         guard let representation = plant.plantRepresentation else {
             completion(.otherError)
@@ -260,7 +276,7 @@ extension PlantController {
         
         var request = URLRequest(url: requestURL)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+//        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = HTTPMethod.post.rawValue
         
         let jsonEncoder = JSONEncoder()
@@ -298,10 +314,10 @@ extension PlantController {
     }
     
     private func deletePlantFromServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
-        guard let token = LoginController.shared.token else {
-            completion(.noAuth)
-            return
-        }
+//        guard let token = LoginController.shared.token else {
+//            completion(.noAuth)
+//            return
+//        }
         
         guard let id = plant.id else {
             completion(.otherError)
@@ -315,7 +331,7 @@ extension PlantController {
         
         var request = URLRequest(url: requestURL)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+//        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = HTTPMethod.delete.rawValue
         
         URLSession.shared.dataTask(with: request) { _, _, error in

@@ -20,14 +20,23 @@ extension Plant {
             id = UUID().uuidString
         }
         
+        var notificationTimeRep: String?
+        
+        if let notificationTime = self.notificationTime {
+            let timeRepFormatter = DateFormatter()
+            timeRepFormatter.dateFormat = "HH:mm:ss"
+            notificationTimeRep = timeRepFormatter.string(from: notificationTime)
+        }
+        
         return PlantRepresentation(nickName: nickName,
                                    species: species,
                                    h2oFrequency: h2oFrequency,
                                    image: image,
                                    id: id,
-                                   notificationsEnabled: notificationsEnabled,
-                                   notificationTime: notificationTime,
-                                   dateLastWatered: dateLastWatered)
+                                   notificationEnabled: notificationEnabled,
+                                   notificationTime: notificationTimeRep,
+                                   dateLastWatered: dateLastWatered,
+                                   userId: userId)
     }
     
     var daysSinceLastWatered: Int? {
@@ -49,6 +58,13 @@ extension Plant {
         return dayLastWatered == today
     }
     
+    var notificationTimeString: String? {
+        guard let notificationTime = notificationTime else { return nil }
+        let timeFormatter = DateFormatter()
+        timeFormatter.timeStyle = .short
+        return timeFormatter.string(from: notificationTime)
+    }
+    
     // MARK: - Initializers
     
     @discardableResult
@@ -58,10 +74,11 @@ extension Plant {
                      image: String? = nil,
                      localImageData: Data? = nil,
                      id: String = UUID().uuidString,
-                     notificationsEnabled: Bool = false,
-                     notificationTime: String? = nil,
+                     notificationEnabled: Bool = false,
+                     notificationTime: Date? = nil,
                      dateLastWatered: Date? = nil,
                      prevDateLastWatered: Date? = nil,
+                     userId: String? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
@@ -71,24 +88,34 @@ extension Plant {
         self.image = image
         self.localImageData = localImageData
         self.id = id
-        self.notificationsEnabled = notificationsEnabled
+        self.notificationEnabled = notificationEnabled
         self.notificationTime = notificationTime
         self.dateLastWatered = dateLastWatered
         self.prevDateLastWatered = prevDateLastWatered
+        self.userId = userId
     }
     
     @discardableResult
     convenience init?(plantRepresentation: PlantRepresentation,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
+        var notificationTime: Date?
+        
+        if let notificationTimeRep = plantRepresentation.notificationTime {
+            let timeRepFormatter = DateFormatter()
+            timeRepFormatter.dateFormat = "HH:mm:ss"
+            notificationTime = timeRepFormatter.date(from: notificationTimeRep)
+        }
+        
         self.init(nickName: plantRepresentation.nickName,
                   species: plantRepresentation.species,
                   h2oFrequency: plantRepresentation.h2oFrequency,
                   image: plantRepresentation.image,
                   id: plantRepresentation.id ?? UUID().uuidString,
-                  notificationsEnabled: plantRepresentation.notificationsEnabled ?? false,
-                  notificationTime: plantRepresentation.notificationTime,
+                  notificationEnabled: plantRepresentation.notificationEnabled ?? false,
+                  notificationTime: notificationTime,
                   dateLastWatered: plantRepresentation.dateLastWatered,
+                  userId: plantRepresentation.userId,
                   context: context)
     }
 }

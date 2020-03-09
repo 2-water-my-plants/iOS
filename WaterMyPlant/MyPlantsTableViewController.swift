@@ -38,6 +38,22 @@ class MyPlantsTableViewController: UITableViewController {
         return frc
     }()
     
+    // MARK: - Initializers
+
+    override init(style: UITableView.Style) {
+        super.init(style: style)
+        if let userId = user?.id {
+            plantController.userId = String(userId)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        if let userId = user?.id {
+            plantController.userId = String(userId)
+        }
+    }
+    
     // MARK: - IBActions
     
     @IBAction func refresh(_ sender: UIRefreshControl) {
@@ -95,13 +111,14 @@ class MyPlantsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
             
         case "ShowPlantDetailSegue":
             guard let detailVC = segue.destination as? PlantDetailViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            detailVC.plant = fetchedResultsController.object(at: indexPath)
+            let plant = fetchedResultsController.object(at: indexPath)
+            detailVC.plant = plant
+            detailVC.title = plant.nickName
             detailVC.plantController = plantController
             
         case "ShowAddPlantSegue":
@@ -109,9 +126,9 @@ class MyPlantsTableViewController: UITableViewController {
             detailVC.plantController = plantController
             
         case "ProfileSegue":
-            guard let profileVC = segue.destination as? ProfileViewController else {
-                return }
+            guard let profileVC = segue.destination as? ProfileViewController else { return }
             profileVC.user = user
+            
         default:
             break
         }
