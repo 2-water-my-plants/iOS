@@ -13,18 +13,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-pb-RRg">
-                                <rect key="frame" x="0.0" y="224.66666666666669" width="375" height="667.33333333333326"/>
+                                <rect key="frame" x="0.0" y="170.66666666666669" width="375" height="667.33333333333326"/>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-9N-Psh">
-                                <rect key="frame" x="16" y="244.66666666666666" width="343" height="463.33333333333337"/>
+                                <rect key="frame" x="16" y="190.66666666666666" width="343" height="463.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-0V-4Lf">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="316"/>
@@ -318,7 +318,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="PlantsSelectorVC" id="U1N-Nb-cBm" customClass="MyPlantsTableViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="meD-2Z-Isk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -439,11 +439,11 @@ Today</string>
             <objects>
                 <viewController id="GT5-Gu-bHE" customClass="PlantDetailViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwU-Lb-uE9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-3h-JGg">
-                                <rect key="frame" x="20" y="375" width="335" height="304"/>
+                                <rect key="frame" x="20" y="235" width="335" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-L2-8fa">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="202"/>
@@ -458,7 +458,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a plant name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jry-tU-MAd">
-                                                        <rect key="frame" x="59" y="6.6666666666666856" width="143" height="21"/>
+                                                        <rect key="frame" x="59" y="6.6666666666666572" width="143" height="21"/>
                                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -535,7 +535,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fk1-7a-avi">
-                                                        <rect key="frame" x="165" y="6.6666666666666288" width="5" height="21"/>
+                                                        <rect key="frame" x="165" y="6.6666666666666856" width="5" height="21"/>
                                                         <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -579,7 +579,7 @@ Today</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xmr-ce-iTP">
-                                                        <rect key="frame" x="146.33333333333337" y="6.6666666666666288" width="188.66666666666663" height="21"/>
+                                                        <rect key="frame" x="146.33333333333337" y="6.6666666666666856" width="188.66666666666663" height="21"/>
                                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -594,13 +594,13 @@ Today</string>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="green-leaf-plant-with-white-pot" translatesAutoresizingMaskIntoConstraints="NO" id="b72-9o-Hgm">
-                                <rect key="frame" x="80" y="140" width="215" height="215"/>
+                                <rect key="frame" x="80" y="0.0" width="215" height="215"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b72-9o-Hgm" secondAttribute="height" multiplier="1:1" id="w2c-fE-bEl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKl-wF-WP0">
-                                <rect key="frame" x="232" y="305.33333333333331" width="63" height="49.666666666666686"/>
+                                <rect key="frame" x="232" y="165.33333333333334" width="63" height="49.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" red="0.32156862749999998" green="0.3411764706" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
@@ -678,25 +678,23 @@ Today</string>
             <objects>
                 <viewController id="3jo-cF-Epa" customClass="ProfileViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hax-ta-KGj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-J9-uGi">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1x6-Hn-s1J">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1x6-Hn-s1J">
                                 <rect key="frame" x="0.0" y="181" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89358185518393818" green="1" blue="0.8627142860322492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Change Password"/>
                                 <connections>
                                     <segue destination="Z0n-Dc-MJw" kind="show" identifier="ProfileToChangePassword" id="zVe-6O-8IN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34b-ma-YGa">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34b-ma-YGa">
                                 <rect key="frame" x="0.0" y="247" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89358185518393818" green="1" blue="0.8627142860322492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Change Phone Number"/>
                                 <connections>
@@ -705,6 +703,14 @@ Today</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="34b-ma-YGa" firstAttribute="top" secondItem="1x6-Hn-s1J" secondAttribute="bottom" constant="22" id="3hU-fZ-W7z"/>
+                            <constraint firstItem="1x6-Hn-s1J" firstAttribute="trailing" secondItem="Htw-7h-B6v" secondAttribute="trailing" id="46i-A7-UYi"/>
+                            <constraint firstItem="1x6-Hn-s1J" firstAttribute="leading" secondItem="Htw-7h-B6v" secondAttribute="leading" id="CDJ-Ny-jbT"/>
+                            <constraint firstItem="1x6-Hn-s1J" firstAttribute="top" secondItem="Htw-7h-B6v" secondAttribute="top" constant="181" id="rTu-W4-dcl"/>
+                            <constraint firstItem="34b-ma-YGa" firstAttribute="trailing" secondItem="Htw-7h-B6v" secondAttribute="trailing" id="s2m-K7-iGb"/>
+                            <constraint firstItem="34b-ma-YGa" firstAttribute="leading" secondItem="Htw-7h-B6v" secondAttribute="leading" id="weS-N1-YlP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Htw-7h-B6v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="eRY-GN-C4p">
@@ -724,29 +730,25 @@ Today</string>
             <objects>
                 <viewController title="Phone Number Change" id="f9W-Z4-adc" customClass="PhoneNumberUpdateViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H8H-CU-hlR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="45k-Pu-8p4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="45k-Pu-8p4">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-e0-NFL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-e0-NFL">
                                 <rect key="frame" x="0.0" y="184" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8935818552" green="1" blue="0.862714286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Change Phone Number Below"/>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yW-Iw-DFb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yW-Iw-DFb">
                                 <rect key="frame" x="0.0" y="251" width="375" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8935818552" green="1" blue="0.862714286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXa-AC-puB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXa-AC-puB">
                                 <rect key="frame" x="90" y="309" width="194" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Save New Phone Number">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -755,9 +757,8 @@ Today</string>
                                     <action selector="phoneNumberTapped:" destination="f9W-Z4-adc" eventType="touchUpInside" id="YKd-Dg-LN4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP8-CU-FLx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP8-CU-FLx">
                                 <rect key="frame" x="90" y="363" width="194" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -768,6 +769,27 @@ Today</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="leading" secondItem="p1V-e0-NFL" secondAttribute="leading" id="AhI-Az-dqp"/>
+                            <constraint firstItem="p1V-e0-NFL" firstAttribute="trailing" secondItem="1cc-XH-w8e" secondAttribute="trailing" id="FXu-nO-Iob"/>
+                            <constraint firstItem="KP8-CU-FLx" firstAttribute="leading" secondItem="1cc-XH-w8e" secondAttribute="leading" constant="90" id="Fbs-Ws-vUG"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="leading" secondItem="45k-Pu-8p4" secondAttribute="leading" id="JbE-KL-028"/>
+                            <constraint firstItem="IXa-AC-puB" firstAttribute="top" secondItem="5yW-Iw-DFb" secondAttribute="bottom" constant="24" id="KSh-r5-QIr"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="trailing" secondItem="p1V-e0-NFL" secondAttribute="trailing" id="LJL-vH-vBS"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="trailing" secondItem="45k-Pu-8p4" secondAttribute="trailing" id="MqD-c2-prL"/>
+                            <constraint firstItem="1cc-XH-w8e" firstAttribute="trailing" secondItem="IXa-AC-puB" secondAttribute="trailing" constant="91" id="SXu-uk-lgN"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="45k-Pu-8p4" secondAttribute="bottom" constant="-88" id="UNm-jw-ugx"/>
+                            <constraint firstItem="IXa-AC-puB" firstAttribute="top" secondItem="5yW-Iw-DFb" secondAttribute="bottom" constant="24" id="Wct-cz-3Rb"/>
+                            <constraint firstItem="45k-Pu-8p4" firstAttribute="top" secondItem="1cc-XH-w8e" secondAttribute="top" constant="140" id="aOB-uP-pDL"/>
+                            <constraint firstItem="p1V-e0-NFL" firstAttribute="leading" secondItem="1cc-XH-w8e" secondAttribute="leading" id="ds3-1k-Nbm"/>
+                            <constraint firstItem="IXa-AC-puB" firstAttribute="leading" secondItem="1cc-XH-w8e" secondAttribute="leading" constant="90" id="eYz-Ie-wdC"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="top" secondItem="H8H-CU-hlR" secondAttribute="top" constant="251" id="kYO-kS-Bw3"/>
+                            <constraint firstItem="KP8-CU-FLx" firstAttribute="top" secondItem="IXa-AC-puB" secondAttribute="bottom" constant="24" id="l9c-Ou-Gxw"/>
+                            <constraint firstItem="p1V-e0-NFL" firstAttribute="top" secondItem="1cc-XH-w8e" secondAttribute="top" constant="184" id="sbG-kn-veH"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="top" secondItem="p1V-e0-NFL" secondAttribute="bottom" constant="23" id="uoj-yR-gcQ"/>
+                            <constraint firstItem="1cc-XH-w8e" firstAttribute="trailing" secondItem="KP8-CU-FLx" secondAttribute="trailing" constant="91" id="yJR-I4-Eqe"/>
+                            <constraint firstItem="5yW-Iw-DFb" firstAttribute="top" secondItem="p1V-e0-NFL" secondAttribute="bottom" constant="23" id="yPv-98-pMj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1cc-XH-w8e"/>
                     </view>
                     <navigationItem key="navigationItem" title="P. Number Change" id="Ez7-23-gmt"/>
@@ -784,32 +806,29 @@ Today</string>
             <objects>
                 <viewController id="Z0n-Dc-MJw" customClass="UserUpdateViewController" customModule="WaterMyPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6D-TH-nBm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green-leafed-plants-1650035" translatesAutoresizingMaskIntoConstraints="NO" id="nfG-ff-Bjv">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password Below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEa-Vh-IWp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change Password Below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEa-Vh-IWp">
                                 <rect key="frame" x="0.0" y="181" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8935818552" green="1" blue="0.862714286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-b4-vsa">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-b4-vsa">
                                 <rect key="frame" x="0.0" y="246" width="375" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8935818552" green="1" blue="0.862714286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTH-RR-vST">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTH-RR-vST">
                                 <rect key="frame" x="90" y="309" width="194" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Save New Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -818,9 +837,8 @@ Today</string>
                                     <action selector="passwordTapped:" destination="Z0n-Dc-MJw" eventType="touchUpInside" id="hpO-qc-5at"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp8-eH-etM">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp8-eH-etM">
                                 <rect key="frame" x="90" y="363" width="194" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -831,6 +849,20 @@ Today</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rEa-Vh-IWp" firstAttribute="top" secondItem="5rv-ot-NUj" secondAttribute="top" constant="181" id="2Mi-VU-feG"/>
+                            <constraint firstItem="rEa-Vh-IWp" firstAttribute="trailing" secondItem="5rv-ot-NUj" secondAttribute="trailing" id="CXx-Zt-b37"/>
+                            <constraint firstItem="Z5C-b4-vsa" firstAttribute="trailing" secondItem="5rv-ot-NUj" secondAttribute="trailing" id="GdS-GH-dcI"/>
+                            <constraint firstItem="cp8-eH-etM" firstAttribute="leading" secondItem="5rv-ot-NUj" secondAttribute="leading" constant="90" id="Hfn-bQ-5nn"/>
+                            <constraint firstItem="Z5C-b4-vsa" firstAttribute="leading" secondItem="5rv-ot-NUj" secondAttribute="leading" id="ZYy-zZ-fPe"/>
+                            <constraint firstItem="5rv-ot-NUj" firstAttribute="trailing" secondItem="VTH-RR-vST" secondAttribute="trailing" constant="91" id="bX0-Ho-FcF"/>
+                            <constraint firstItem="VTH-RR-vST" firstAttribute="leading" secondItem="5rv-ot-NUj" secondAttribute="leading" constant="90" id="cyO-3b-Mbp"/>
+                            <constraint firstItem="cp8-eH-etM" firstAttribute="top" secondItem="VTH-RR-vST" secondAttribute="bottom" constant="24" id="l1n-6D-Osq"/>
+                            <constraint firstItem="Z5C-b4-vsa" firstAttribute="top" secondItem="rEa-Vh-IWp" secondAttribute="bottom" constant="21" id="l90-1x-VQj"/>
+                            <constraint firstItem="5rv-ot-NUj" firstAttribute="trailing" secondItem="cp8-eH-etM" secondAttribute="trailing" constant="91" id="q5x-ii-6ce"/>
+                            <constraint firstItem="rEa-Vh-IWp" firstAttribute="leading" secondItem="5rv-ot-NUj" secondAttribute="leading" id="qfk-RK-Fz9"/>
+                            <constraint firstItem="VTH-RR-vST" firstAttribute="top" secondItem="Z5C-b4-vsa" secondAttribute="bottom" constant="29" id="zim-tt-0uI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5rv-ot-NUj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Password Change" id="SWh-lq-2cT"/>
@@ -852,8 +884,8 @@ Today</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LMT-Wg-GUO"/>
-        <segue reference="4O2-X6-ecm"/>
-        <segue reference="zlX-c7-kBC"/>
+        <segue reference="zfU-Uy-B98"/>
+        <segue reference="3Vg-GW-elZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

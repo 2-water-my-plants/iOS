@@ -56,7 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		633AF9592415032000F3E0B5 /* green-leaves-in-rain.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "green-leaves-in-rain.mp4"; sourceTree = "<group>"; };
+		633AF9592415032000F3E0B5 /* green-leaves-in-rain.mp4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "green-leaves-in-rain.mp4"; sourceTree = "<group>"; };
 		63F35589240D9B830025A42C /* WaterMyPlant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaterMyPlant.xcdatamodel; sourceTree = "<group>"; };
 		63F3558B240D9B8C0025A42C /* Plant+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
 		63F3558D240D9B920025A42C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -575,7 +575,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianlorenzo.WaterMyPlant.dtw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -594,7 +594,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianlorenzo.WaterMyPlant.dtw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
