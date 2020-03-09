@@ -85,7 +85,7 @@ class SignInViewController: UIViewController {
             plantsTableVC.user = loginController.user
         } else if segue.identifier == "SigninToDetailViewController" {
             guard let navController2 = segue.destination as? UINavigationController,
-            let plantsTableVC2 = navController2.topViewController as? MyPlantsTableViewController else { return }
+                let plantsTableVC2 = navController2.topViewController as? MyPlantsTableViewController else { return }
             plantsTableVC2.user = loginController.user
         }
     }
