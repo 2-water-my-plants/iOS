@@ -793,6 +793,7 @@
 		63F35588240D9B830025A42C /* WaterMyPlant.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				633AF95B2415FC0C00F3E0B5 /* WaterMyPlant 2.xcdatamodel */,
 				63F35589240D9B830025A42C /* WaterMyPlant.xcdatamodel */,
 			);
 			currentVersion = 63F35589240D9B830025A42C /* WaterMyPlant.xcdatamodel */;

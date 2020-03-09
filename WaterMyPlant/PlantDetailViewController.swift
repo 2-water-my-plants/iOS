@@ -39,7 +39,7 @@ class PlantDetailViewController: UIViewController {
     @IBOutlet private weak var h2oFrequencyTextField: UITextField!
     @IBOutlet private weak var lastWateredTextField: UITextField!
     @IBOutlet private weak var nextWateringTextField: UITextField!
-    @IBOutlet private weak var enableNotificationsSwitch: UISwitch!
+    @IBOutlet private weak var enableNotificationSwitch: UISwitch!
     @IBOutlet private weak var notificationTimeTextField: UITextField!
     @IBOutlet private weak var plantImageView: UIImageView!
     
@@ -63,10 +63,14 @@ class PlantDetailViewController: UIViewController {
         
         let species = speciesTextField.text
         let h2oFrequency = h2oFrequencyTextField.text
-        let notificationsEnabled = enableNotificationsSwitch.isOn
-        let notificationTime = notificationTimeTextField.text
+        let notificationEnabled = enableNotificationSwitch.isOn
         let localImageData = plantImageView.image?.pngData()
 
+        var notificationTime: Date?
+        if let notificationTimeString = notificationTimeTextField.text {
+            notificationTime = timeFormatter.date(from: notificationTimeString)
+        }
+        
         var dateLastWatered: Date?
         if let dateLastWateredString = lastWateredTextField.text {
             dateLastWatered = dateFormatter.date(from: dateLastWateredString)
@@ -80,7 +84,7 @@ class PlantDetailViewController: UIViewController {
                                         h2oFrequency: h2oFrequency,
                                         image: plant.image,
                                         localImageData: localImageData,
-                                        notificationsEnabled: notificationsEnabled,
+                                        notificationEnabled: notificationEnabled,
                                         notificationTime: notificationTime,
                                         dateLastWatered: dateLastWatered)
         } else {
@@ -89,7 +93,7 @@ class PlantDetailViewController: UIViewController {
                                         species: species,
                                         h2oFrequency: h2oFrequency,
                                         localImageData: localImageData,
-                                        notificationsEnabled: notificationsEnabled,
+                                        notificationEnabled: notificationEnabled,
                                         notificationTime: notificationTime,
                                         dateLastWatered: dateLastWatered)
         }
@@ -97,7 +101,16 @@ class PlantDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - Date Picker
+    // MARK: - View Controller Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        updateViews()
+        //showDateChooserAlert()
+    }
+    
+    // MARK: - Setup Views
 
     // This code commented out below is a second option for displaying the datepicker.
     // I think it will look nicer than what we have now, but but there are still a few bugs
@@ -132,35 +145,42 @@ class PlantDetailViewController: UIViewController {
     
     private func setupViews() {
         plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0
+        h2oFrequencyTextField.addTarget(self, action: #selector(updateNextWateringTextField), for: .editingChanged)
+        setupLastWateredDatePicker()
+        setupNotificationTimePicker()
     }
     
-    private func setupDatePicker() {
-        h2oFrequencyTextField.addTarget(self, action: #selector(updateNextWateringTextField), for: .editingChanged)
+    // LastWateredDate Picker
+    private func setupLastWateredDatePicker() {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
-        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(lastWateredDateChanged), for: .valueChanged)
         lastWateredTextField.inputView = datePicker
     }
     
-    @objc func dateChanged(datePicker: UIDatePicker) {
+    @objc func lastWateredDateChanged(datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
         self.lastWateredTextField.text = dateFormatter.string(from: selectedDate)
         view.endEditing(true)
         updateNextWateringTextField()
     }
     
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupDatePicker()
-        updateViews()
-        //showDateChooserAlert()
+    // NotificationTime Picker
+    private func setupNotificationTimePicker() {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        timePicker.addTarget(self, action: #selector(notificationTimeChanged), for: .valueChanged)
+        notificationTimeTextField.inputView = timePicker
+    }
+    
+    @objc func notificationTimeChanged(timePicker: UIDatePicker) {
+        let selectedTime = timePicker.date
+        self.notificationTimeTextField.text = timeFormatter.string(from: selectedTime)
+        view.endEditing(true)
     }
 
-    // MARK: - UpdateViews
+    // MARK: - Update Views
     
     private func updateViews() {
         guard isViewLoaded else { return }
@@ -177,17 +197,8 @@ class PlantDetailViewController: UIViewController {
                     self.h2oFrequencyTextField.text = String(h2oFrequency)
                 }
                 
-                self.enableNotificationsSwitch.isOn = plant.notificationsEnabled
-                self.notificationTimeTextField.text = plant.notificationTime
-                // Use code below if notificationTime gets changed to a Date() object
-                /*
-                if let notificationTime = plant.notificationTime {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "h:mm a"
-                    let timeString = formatter.string(from: notificationTime)
-                    self.notificationTimeTextField.text = timeString
-                }
-                */
+                self.enableNotificationSwitch.isOn = plant.notificationEnabled
+                self.notificationTimeTextField.text = plant.notificationTimeString
                 
                 if let dateLastWatered = plant.dateLastWatered {
                     let dateLastWateredString = self.dateFormatter.string(from: dateLastWatered)

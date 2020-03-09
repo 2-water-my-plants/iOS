@@ -635,7 +635,7 @@ Today</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="enableNotificationsSwitch" destination="fld-10-CAc" id="RNb-G4-2NE"/>
+                        <outlet property="enableNotificationSwitch" destination="fld-10-CAc" id="8Xh-TD-N1c"/>
                         <outlet property="h2oFrequencyTextField" destination="nuC-lG-acc" id="Fhi-fo-wJj"/>
                         <outlet property="lastWateredTextField" destination="fyZ-kZ-YRe" id="aL3-1N-ttL"/>
                         <outlet property="nameTextField" destination="jry-tU-MAd" id="hhu-xK-YGc"/>
@@ -884,7 +884,7 @@ Today</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LMT-Wg-GUO"/>
-        <segue reference="zfU-Uy-B98"/>
+        <segue reference="ZCT-80-ZWv"/>
         <segue reference="3Vg-GW-elZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
