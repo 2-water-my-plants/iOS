@@ -327,11 +327,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" rowHeight="89" id="R1D-ig-3PS" customClass="MyPlantsTableViewCell" customModule="WaterMyPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="89"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" rowHeight="442" id="R1D-ig-3PS" customClass="MyPlantsTableViewCell" customModule="WaterMyPlant" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="442"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R1D-ig-3PS" id="paG-1K-n4c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="442"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-leaf-plant-with-white-pot" translatesAutoresizingMaskIntoConstraints="NO" id="ohT-dP-vaW">
@@ -341,27 +341,37 @@
                                                 <constraint firstAttribute="width" constant="67" id="qiL-ru-Urw"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bxE-Ds-ofJ">
-                                            <rect key="frame" x="91.000000000000014" y="11" width="212.33333333333337" height="67"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bxE-Ds-ofJ">
+                                            <rect key="frame" x="91.000000000000014" y="10.999999999999996" width="212.33333333333337" height="63.666666666666657"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Desk Plant" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-Xl-IWs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Office Desk Plant" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-Xl-IWs">
                                                     <rect key="frame" x="0.0" y="0.0" width="138.33333333333334" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" red="0.1647058824" green="0.18823529410000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aloe vera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-t9-61X">
-                                                    <rect key="frame" x="0.0" y="23.333333333333336" width="64" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species: Aloe vera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-t9-61X">
+                                                    <rect key="frame" x="0.0" y="23.333333333333336" width="119.33333333333333" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water in 3 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Fj-FHO">
-                                                    <rect key="frame" x="0.0" y="46.666666666666664" width="106" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cwn-5D-SrU">
+                                                    <rect key="frame" x="0.0" y="43.333333333333336" width="119" height="20.333333333333336"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water in 3 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGC-Uc-f7H">
+                                                            <rect key="frame" x="0.0" y="1.6666666666666643" width="100" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.2470588235" green="0.27058823529999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wzQ-j5-VAr">
+                                                            <rect key="frame" x="103" y="2.3333333333333321" width="16" height="16"/>
+                                                            <color key="tintColor" red="0.2476718128" green="0.55487030739999998" blue="0.3411462307" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tBb-Kh-Mc0">
@@ -378,7 +388,7 @@
                                                         <action selector="isWateredCheckBoxTapped:" destination="R1D-ig-3PS" eventType="touchUpInside" id="Yae-Jk-jJS"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-E1-dbg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n3-E1-dbg">
                                                     <rect key="frame" x="0.0" y="32" width="47.666666666666664" height="28.666666666666671"/>
                                                     <string key="text">Watered
 Today</string>
@@ -404,9 +414,10 @@ Today</string>
                                     <outlet property="isWateredCheckBox" destination="bvX-cU-QjS" id="pGy-ag-rr7"/>
                                     <outlet property="isWateredLabel" destination="4n3-E1-dbg" id="4h8-9R-MuE"/>
                                     <outlet property="nameLabel" destination="rA0-Xl-IWs" id="jzQ-Fm-7o1"/>
+                                    <outlet property="notificationStatusImageView" destination="wzQ-j5-VAr" id="ULO-Qe-c2f"/>
                                     <outlet property="plantImageView" destination="ohT-dP-vaW" id="pYc-nv-kk2"/>
                                     <outlet property="speciesLabel" destination="lDh-t9-61X" id="C0g-NO-1gP"/>
-                                    <outlet property="waterCountdownLabel" destination="do5-Fj-FHO" id="FQH-Rf-tj7"/>
+                                    <outlet property="waterCountdownLabel" destination="AGC-Uc-f7H" id="oQi-Ou-3hs"/>
                                     <segue destination="GT5-Gu-bHE" kind="show" identifier="ShowPlantDetailSegue" id="dGu-fd-aml"/>
                                 </connections>
                             </tableViewCell>
@@ -909,6 +920,7 @@ Today</string>
         </scene>
     </scenes>
     <resources>
+        <image name="bell.fill" catalog="system" width="64" height="62"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="green-leaf-plant-with-white-pot" width="1008" height="1344"/>
         <image name="green-leafed-plants-1650035" width="944" height="1632"/>
@@ -916,6 +928,7 @@ Today</string>
         <image name="square" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MYm-hY-pJK"/>
         <segue reference="LMT-Wg-GUO"/>
         <segue reference="zfU-Uy-B98"/>
         <segue reference="3Vg-GW-elZ"/>

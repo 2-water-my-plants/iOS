@@ -32,6 +32,7 @@ class MyPlantsTableViewCell: UITableViewCell {
     @IBOutlet private weak var waterCountdownLabel: UILabel!
     @IBOutlet private weak var isWateredCheckBox: UIButton!
     @IBOutlet private weak var isWateredLabel: UILabel!
+    @IBOutlet private weak var notificationStatusImageView: UIImageView!
     
     // MARK: - IBActions
     
@@ -40,9 +41,11 @@ class MyPlantsTableViewCell: UITableViewCell {
         
         if isWateredCheckBox.currentImage == UIImage(systemName: "checkmark.square.fill") {
             isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
+            isWateredCheckBox.tintColor = #colorLiteral(red: 0.5308474898, green: 0.5453452468, blue: 0.5667580962, alpha: 1)
             delegate?.isWateredCheckBoxWasUnchecked(for: plant)
         } else {
             isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            isWateredCheckBox.tintColor = #colorLiteral(red: 0.009934567846, green: 0.56351161, blue: 0.3181376457, alpha: 1)
             delegate?.isWateredCheckBoxWasChecked(for: plant)
         }
     }
@@ -59,7 +62,29 @@ class MyPlantsTableViewCell: UITableViewCell {
         }
         
         nameLabel.text = plant.nickName
-        speciesLabel.text = "Species: \(plant.species ?? "not specified")"
+        
+        if plant.notificationEnabled,
+            let notificationDate = plant.notificationDate {
+            
+            notificationStatusImageView.isHidden = false
+            let currentDate = Date()
+            
+            if currentDate < notificationDate {
+                notificationStatusImageView.tintColor = #colorLiteral(red: 0.009934567846, green: 0.56351161, blue: 0.3181376457, alpha: 1)
+            } else {
+                notificationStatusImageView.tintColor = #colorLiteral(red: 0.7991598248, green: 0.8039757609, blue: 0.8168272376, alpha: 1)
+            }
+            
+        } else {
+            notificationStatusImageView.isHidden = true
+        }
+        
+        if let species = plant.species,
+            !species.isEmpty {
+            speciesLabel.text = "Species: \(species)"
+        } else {
+            speciesLabel.text = "Species: unspecified"
+        }
         
         guard let daysSinceLastWatered = plant.daysSinceLastWatered else { return }
                 
@@ -68,7 +93,7 @@ class MyPlantsTableViewCell: UITableViewCell {
             isWateredCheckBox.tintColor = #colorLiteral(red: 0.009934567846, green: 0.56351161, blue: 0.3181376457, alpha: 1)
             isWateredCheckBox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
         } else {
-            isWateredCheckBox.tintColor = #colorLiteral(red: 0.3215686275, green: 0.3411764706, blue: 0.3803921569, alpha: 1)
+            isWateredCheckBox.tintColor = #colorLiteral(red: 0.5308474898, green: 0.5453452468, blue: 0.5667580962, alpha: 1)
             isWateredCheckBox.setImage(UIImage(systemName: "square"), for: .normal)
         }
         
