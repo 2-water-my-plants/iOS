@@ -9,7 +9,7 @@
 import XCTest
 
 class WaterMyPlantUITests: XCTestCase {
-    
+    // swiftlint:disable all
     //This is one way of doing it.
     func testLogin() {
         let app = XCUIApplication()
@@ -160,4 +160,5 @@ class WaterMyPlantUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    // swiftlint:enable all
 }
