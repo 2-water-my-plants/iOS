@@ -25,9 +25,7 @@ class CoreDataStack {
         return container
     }()
     
-    var mainContext: NSManagedObjectContext {
-        return container.viewContext
-    }
+    var mainContext: NSManagedObjectContext { container.viewContext }
     
     func save(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {
         var saveError: Error?

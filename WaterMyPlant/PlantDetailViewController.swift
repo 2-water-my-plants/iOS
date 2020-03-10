@@ -94,12 +94,12 @@ class PlantDetailViewController: UIViewController {
         } else {
             // Create a new plant
             let plant = plantController.createPlant(nickName: nickName,
-                                        species: species,
-                                        h2oFrequency: h2oFrequency,
-                                        localImageData: localImageData,
-                                        notificationEnabled: notificationEnabled,
-                                        notificationTime: notificationTime,
-                                        dateLastWatered: dateLastWatered)
+                                                    species: species,
+                                                    h2oFrequency: h2oFrequency,
+                                                    localImageData: localImageData,
+                                                    notificationEnabled: notificationEnabled,
+                                                    notificationTime: notificationTime,
+                                                    dateLastWatered: dateLastWatered)
             
             scheduleWaterNotification(for: plant)
         }
@@ -128,7 +128,7 @@ class PlantDetailViewController: UIViewController {
         
         let request = UNNotificationRequest(identifier: "Reminder", content: content, trigger: trigger)
         
-        notificationCenter.add(request) { (error) in
+        notificationCenter.add(request) { error in
             if error != nil {
                 print("Error = \(error?.localizedDescription ?? "error local notification")")
             } else {
@@ -151,39 +151,6 @@ class PlantDetailViewController: UIViewController {
         updateViews()
         //showDateChooserAlert()
     }
-    
-    // MARK: - Setup Views
-
-    // This code commented out below is a second option for displaying the datepicker.
-    // I think it will look nicer than what we have now, but but there are still a few bugs
-    // that need to be fixed in the code. I'll come back to this later if there is time.
-    
-    /*
-    private func showDateChooserAlert() {
-        let dateChooserAlert = UIAlertController(title: "When was this plant last watered?",
-                                                 message: "Select Date",
-                                                 preferredStyle: .actionSheet)
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.maximumDate = Date()
-        dateChooserAlert.view.addSubview(datePicker)
-        dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
-            let selectedDate = datePicker.date
-            self.lastWateredTextField.text = self.dateFormatter.string(from: selectedDate)
-        }))
-        
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            datePicker.heightAnchor.constraint(equalTo: dateChooserAlert.view.heightAnchor, constant: -40)
-        ])
-        
-        let height: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
-        dateChooserAlert.view.addConstraint(height)
-        
-        self.present(dateChooserAlert, animated: true, completion: nil)
-    }
-    */
     
     private func setupViews() {
         plantImageView.layer.cornerRadius = plantImageView.bounds.width / 2.0

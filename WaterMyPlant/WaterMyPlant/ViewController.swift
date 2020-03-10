@@ -70,8 +70,6 @@ class ViewController: UIViewController {
         player.seek(to: CMTime.zero, completionHandler: nil)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { true }
     
 }

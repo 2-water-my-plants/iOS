@@ -19,16 +19,14 @@ class PhoneNumberUpdateViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
     
     @IBAction func phoneNumberTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         
-        
-        
         guard let newNumber = phoneNumberTextField.text else { return }
-        updateNumber(with: newNumber) { (error) in
-    
+        updateNumber(with: newNumber) { error in
+            
         }
         let alert = UIAlertController(title: "Success", message: "Phone number has been updated!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))

@@ -120,7 +120,7 @@ class WaterMyPlantTests: XCTestCase {
         
         let signupNetworking = SignupNetworking()
         let signupRequest = SignupRequest(username: UUID().uuidString, password: "", phoneNumber: "")
-        signupNetworking.signUp(with: signupRequest) { (error) in
+        signupNetworking.signUp(with: signupRequest) { error in
             XCTAssertNotNil(error)
             loginExpectation.fulfill()
         }
@@ -133,7 +133,7 @@ class WaterMyPlantTests: XCTestCase {
         
         let signupNetworking = SignupNetworking()
         let signupRequest = SignupRequest(username: "chris2", password: "test1", phoneNumber: "12345")
-        signupNetworking.signUp(with: signupRequest) { (error) in
+        signupNetworking.signUp(with: signupRequest) { error in
             XCTAssertNotNil(error)
             loginExpectation.fulfill()
         }
@@ -141,8 +141,3 @@ class WaterMyPlantTests: XCTestCase {
         wait(for: [loginExpectation], timeout: 10.0)
     }
 }
-
-
-
-
-
