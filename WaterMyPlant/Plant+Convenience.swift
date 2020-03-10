@@ -72,6 +72,17 @@ extension Plant {
         return Int(notificationTime.timeIntervalSince(beginningOfDay))
     }
     
+    var notificationDate: Date? {
+        guard let dateLastWatered = dateLastWatered,
+            let h2oFrequency = h2oFrequency,
+            let h2oFrequencyInt = Int(h2oFrequency),
+            let notificationTimeInSeconds = notificationTimeInSeconds else { return nil }
+        let beginningOfDateLastWatered = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: dateLastWatered)!
+        let nextWaterDate = beginningOfDateLastWatered.advanced(by: TimeInterval(h2oFrequencyInt * 86400))
+        let notificationDate = nextWaterDate.advanced(by: TimeInterval(notificationTimeInSeconds))
+        return notificationDate
+    }
+    
     // MARK: - Initializers
     
     @discardableResult

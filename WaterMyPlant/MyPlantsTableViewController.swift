@@ -25,7 +25,7 @@ class MyPlantsTableViewController: UITableViewController {
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                              managedObjectContext: moc,
-                                             sectionNameKeyPath: "dateLastWatered",
+                                             sectionNameKeyPath: nil, //"dateLastWatered",
                                              cacheName: nil)
         frc.delegate = self
         
@@ -37,6 +37,8 @@ class MyPlantsTableViewController: UITableViewController {
         
         return frc
     }()
+    
+    var overduePlantExists: Bool = false
     
     // MARK: - Initializers
 
@@ -74,7 +76,7 @@ class MyPlantsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        //animateTable()
+        animateTable()
     }
 
     // MARK: - Table view data source
@@ -140,23 +142,47 @@ class MyPlantsTableViewController: UITableViewController {
         tableView.reloadData()
         let cells = tableView.visibleCells
         
+        var headers: [UITableViewHeaderFooterView] = []
+        for sectionIndex in 0..<tableView.numberOfSections {
+            if let section = tableView.headerView(forSection: sectionIndex) {
+                headers.append(section)
+            }
+        }
+        
         let tableViewHeight = tableView.bounds.size.height
         
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
         }
         
-        var delayCounter = 0
+        for header in headers {
+            header.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        
+        var cellDelayCounter = 0
         for cell in cells {
             UIView.animate(withDuration: 1.75,
-                           delay: Double(delayCounter) * 0.2,
+                           delay: Double(cellDelayCounter) * 0.2,
                            usingSpringWithDamping: 0.8,
                            initialSpringVelocity: 0,
                            options: .curveEaseOut,
                            animations: { cell.transform = CGAffineTransform.identity },
                            completion: nil)
             
-            delayCounter += 1
+            cellDelayCounter += 1
+        }
+        
+        var headerDelayCounter = 0
+        for header in headers {
+            UIView.animate(withDuration: 1.75,
+                           delay: Double(headerDelayCounter) * 0.2,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseOut,
+                           animations: { header.transform = CGAffineTransform.identity },
+                           completion: nil)
+            
+            headerDelayCounter += 1
         }
     }
 }
