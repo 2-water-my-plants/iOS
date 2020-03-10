@@ -12,12 +12,6 @@ class UserUpdateViewController: UIViewController {
     
     var user: User?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    
     @IBOutlet private weak var newPasswordField: UITextField!
     
     @IBAction func passwordTapped(_ sender: Any) {
@@ -31,7 +25,6 @@ class UserUpdateViewController: UIViewController {
         updateInformation(with: newPassword) { error in
             
         }
-        
     }
     
     func updateInformation(with password: String, completion: @escaping (Error?) -> Void) {
@@ -73,13 +66,3 @@ class UserUpdateViewController: UIViewController {
         }.resume()
     }
 }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

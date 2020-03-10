@@ -26,7 +26,7 @@ class LoginController {
     var token: Token?
     var user: User?
     
-    func login(with loginData: LoginRequest, completion: @escaping CompletionHandler = { _ in}) {
+    func login(with loginData: LoginRequest, completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL.appendingPathComponent("/auth/login")
         
         var request = URLRequest(url: requestURL)
@@ -49,18 +49,23 @@ class LoginController {
                 return
             }
             
-            if let error = error { completion(error); return }
-            guard let data = data else { completion(NSError()); return}
+            if let error = error {
+                completion(error)
+                return
+            }
             
-            let decoder = JSONDecoder()
+            guard let data = data else {
+                completion(NSError())
+                return
+            }
             
             do {
-                let loginResponse = try decoder.decode(LoginResponse.self, from: data)
+                let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
                 let user = loginResponse.user
-                self.token = Token(id: user.id, token: loginResponse.token ?? "")
+                self.token = Token(id: user.id, token: loginResponse.token)
                 self.user = user
             } catch {
-                print("Error decoding Token:  \(error)")
+                print("Error decoding Token: \(error)")
                 completion(error)
                 return
             }

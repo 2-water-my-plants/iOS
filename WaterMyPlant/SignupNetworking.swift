@@ -45,7 +45,7 @@ class SignupNetworking {
                 return
             }
             
-            guard let _ = data else {
+            guard data != nil else {
                 completion(error)
                 return
             }

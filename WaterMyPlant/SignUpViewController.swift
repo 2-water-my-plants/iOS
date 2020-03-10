@@ -76,8 +76,10 @@ class SignUpViewController: UIViewController {
         self.signUpButton.isEnabled = false
         signupController.signUp(with: signupRequest) { error in
             DispatchQueue.main.async {
-                if let _ = error {
-                    let alert = UIAlertController(title: "You're entering an existing Username or Phone Number!", message: "Please try again!", preferredStyle: .alert)
+                if error != nil {
+                    let alert = UIAlertController(title: "You're entering an existing Username or Phone Number!",
+                                                  message: "Please try again!",
+                                                  preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
