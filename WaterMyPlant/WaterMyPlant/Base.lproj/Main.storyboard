@@ -49,6 +49,7 @@
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kl0-HZ-sRm">
                                                                 <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="40"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="usernameTextField"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="QL7-jP-VnF"/>
                                                                 </constraints>
@@ -68,6 +69,7 @@
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcf-BG-HvC">
                                                                 <rect key="frame" x="0.0" y="28.333333333333371" width="343" height="40"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="vae-nt-BMb"/>
                                                                 </constraints>
@@ -198,6 +200,7 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fj-I7-OTB">
                                                         <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="40"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="newUserNameTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="p2h-ji-WW7"/>
                                                         </constraints>
@@ -217,6 +220,7 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkS-lV-vqH">
                                                         <rect key="frame" x="0.0" y="28.333333333333343" width="343" height="40"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="newPasswordTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="BM8-F9-jLX"/>
                                                         </constraints>
@@ -236,6 +240,7 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jn3-ab-ZEm">
                                                         <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="40"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="newPhoneNumberTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="gOJ-Ib-OKk"/>
                                                         </constraints>
@@ -887,7 +892,7 @@ Today</string>
     <inferredMetricsTieBreakers>
         <segue reference="LMT-Wg-GUO"/>
         <segue reference="4O2-X6-ecm"/>
-        <segue reference="QZp-Do-qg5"/>
+        <segue reference="zlX-c7-kBC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
